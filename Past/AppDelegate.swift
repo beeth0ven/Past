@@ -7,17 +7,26 @@
 //
 
 import UIKit
+import MapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
+    static let locationManager = CLLocationManager()
+ 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
-
+    
+    func applicationWillResignActive(application: UIApplication) {
+        <#code#>
+    }
+    
+    func applicationWillEnterForeground(application: UIApplication) {
+        <#code#>
+    }
 }
 
