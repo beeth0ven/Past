@@ -19,15 +19,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         print("viewDidLoad")
         
-        AppDelegate.locationManager.requestAlwaysAuthorization()
-        
-        AppDelegate.locationManager.rx_didUpdateLocations
-        .subscribeNext { lcations in
-            print("rx_didUpdateLocations: \(lcations.last!.coordinate)")
-        }
-        .addDisposableTo(disposeBag)
-        
-        AppDelegate.locationManager.startUpdatingLocation()
+//        AppDelegate.locationManager.requestAlwaysAuthorization()
+//        
+//        AppDelegate.locationManager.rx_didUpdateLocations
+//        .subscribeNext { lcations in
+//            print("rx_didUpdateLocations: \(lcations.last!.coordinate)")
+//        }
+//        .addDisposableTo(disposeBag)
+//        
+//        AppDelegate.locationManager.startUpdatingLocation()
     }
         
 }
