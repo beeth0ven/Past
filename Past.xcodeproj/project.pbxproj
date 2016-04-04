@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		451FD1091CAEB3FC003DCAA0 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451FD1081CAEB3FC003DCAA0 /* Context.swift */; };
 		45237A111CAB608600C636A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45237A101CAB608600C636A6 /* AppDelegate.swift */; };
 		45237A181CAB608600C636A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45237A171CAB608600C636A6 /* Assets.xcassets */; };
 		45237A1B1CAB608600C636A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45237A191CAB608600C636A6 /* LaunchScreen.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		05781A893D48E213706D10B9 /* Pods-Past.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Past.release.xcconfig"; path = "Pods/Target Support Files/Pods-Past/Pods-Past.release.xcconfig"; sourceTree = "<group>"; };
+		451FD1081CAEB3FC003DCAA0 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		45237A0D1CAB608600C636A6 /* Past.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Past.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45237A101CAB608600C636A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45237A171CAB608600C636A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				45237A331CAB6DDC00C636A6 /* Queue.swift */,
+				451FD1081CAEB3FC003DCAA0 /* Context.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				45237A3B1CAB7FFD00C636A6 /* View+.swift in Sources */,
 				45237A2D1CAB67DC00C636A6 /* ViewController.swift in Sources */,
 				45237A341CAB6DDC00C636A6 /* Queue.swift in Sources */,
+				451FD1091CAEB3FC003DCAA0 /* Context.swift in Sources */,
 				45237A111CAB608600C636A6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
