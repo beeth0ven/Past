@@ -28,9 +28,9 @@ extension NSManagedObject {
         
     }
     
-    convenience init(inContext context: Context) {
-        let entityDescription = NSEntityDescription.entityForName(String(self.dynamicType), inManagedObjectContext: context.value)!
-        self.init(entity: entityDescription, insertIntoManagedObjectContext: context.value)
+    static func insert(inContext context: NSManagedObject.Context = .Main) -> Self {
+        let entityDescription = NSEntityDescription.entityForName(String(self), inManagedObjectContext: context.value)!
+        return self.init(entity: entityDescription, insertIntoManagedObjectContext: context.value)
     }
 }
 
