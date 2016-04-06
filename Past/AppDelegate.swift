@@ -12,7 +12,7 @@ import RxCocoa
 import MapKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandable, DisposeBagHasable {
+class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandable {
 
     var window: UIWindow?
 
@@ -59,20 +59,4 @@ extension LocationHandable {
     var locationManager: CLLocationManager {
         return AppDelegate.alocationManager
     }
-}
-
-protocol DisposeBagHasable { }
-extension DisposeBagHasable where Self: NSObject {
-    var disposeBag: DisposeBag {
-        if let bag = objc_getAssociatedObject(self, &AssociatedKeys.DisposeBag) as? DisposeBag {
-            return bag
-        }
-        let bag = DisposeBag()
-        objc_setAssociatedObject(self, &AssociatedKeys.DisposeBag, bag, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        return bag
-    }
-}
-
-private struct AssociatedKeys {
-    static var DisposeBag = "DisposeBag"
 }

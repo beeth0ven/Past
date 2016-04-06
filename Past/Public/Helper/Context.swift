@@ -6,31 +6,50 @@
 //  Copyright © 2016年 LuoJie. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 extension NSManagedObject {
     enum Context {
         case Main, Background
         
-        var value: NSManagedObjectContext {
+        var value: NSManagedObjectContext! {
             switch self {
             case .Main:
                 return Context.mainContext
-                
             case .Background:
                 return Context.backgroundContext
             }
         }
         
-        private static var mainContext: NSManagedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        private static var mainContext: NSManagedObjectContext! { didSet { contextDidChange() } }
         private static var backgroundContext: NSManagedObjectContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
         
-    }
-    
-    static func insert(inContext context: NSManagedObject.Context = .Main) -> Self {
-        let entityDescription = NSEntityDescription.entityForName(String(self), inManagedObjectContext: context.value)!
-        return self.init(entity: entityDescription, insertIntoManagedObjectContext: context.value)
+        private static func contextDidChange() {
+            NSNotification.Identifier.ManagedObjectContextDidChange.post()
+        }
+        
+        static func createContext() {
+            var url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last!
+            url = url.URLByAppendingPathComponent("CoreDataDocument")
+            let document = UIManagedDocument(fileURL: url)
+            if !NSFileManager.defaultManager().fileExistsAtPath(url.path!) {
+                document.saveToURL(url, forSaveOperation: .ForCreating, completionHandler: { _ in
+                    print("CoreDataDocument saveToURL")
+                    NSManagedObject.Context.mainContext = document.managedObjectContext
+                })
+            } else if document.documentState == UIDocumentState.Closed {
+                document.openWithCompletionHandler({ _ in
+                    print("CoreDataDocument openWithCompletionHandler")
+                    NSManagedObject.Context.mainContext = document.managedObjectContext
+                })
+            } else {
+                print("CoreDataDocument is opened")
+                NSManagedObject.Context.mainContext = document.managedObjectContext
+            }
+        }
+        
     }
 }
+
 

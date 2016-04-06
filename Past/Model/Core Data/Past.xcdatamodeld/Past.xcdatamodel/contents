@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E39d" minimumToolsVersion="Xcode 7.0">
+    <entity name="Pin" representedClassName=".Pin" syncable="YES">
+        <attribute name="date" attributeType="Date" defaultDateTimeInterval="481621560" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Pin" positionX="-63" positionY="-18" width="128" height="60"/>
+    </elements>
+</model>
