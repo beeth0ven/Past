@@ -53,3 +53,28 @@ extension NSManagedObject {
 }
 
 
+
+class CoreDataSource<CL: UITableViewCell ,MO: NSManagedObject>: NSObject, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+    
+    var fetchedResultsController: NSFetchedResultsController? { didSet { fetchedResultsController?.delegate = self } }
+    weak var tableView: UITableView! { didSet { tableView.dataSource = self; tableView.delegate = self } }
+    
+    var configureCellForObject:    ((CL, MO) -> Void)?
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return fetchedResultsController?.sections?.count ?? 0
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchedResultsController?.sections?[section].numberOfObjects ?? 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let object = fetchedResultsController!.objectAtIndexPath(indexPath) as! MO
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(CL)) as! CL
+        configureCellForObject?(cell, object)
+        return cell
+    }
+    
+    
+}

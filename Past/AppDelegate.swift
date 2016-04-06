@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandable {
         
         locationManager.rx_didUpdateLocations
             .subscribeNext { lcations in
-                print("Past: \(lcations.last!.coordinate)")
+//                print("Past: \(lcations.last!.coordinate)")
             }
             .addDisposableTo(disposeBag)
         

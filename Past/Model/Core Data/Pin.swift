@@ -14,4 +14,7 @@ class Pin: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
+    override func awakeFromInsert() {
+        date = NSDate()
+    }
 }

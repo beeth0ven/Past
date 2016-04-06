@@ -19,10 +19,9 @@ class ViewController: UIViewController {
         
         NSManagedObject.Context.createContext()
         
-        observe(
-            identifier: .ManagedObjectContextDidChange,
-            didReceiveNotification: { (_) in
-                print("UpdateUI")
+        observe(identifier: .ManagedObjectContextDidChange,
+                didReceiveNotification: { (_) in
+                    print("UpdateUI")
         })
     }
     
@@ -31,10 +30,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func refresh(sender: UIBarButtonItem) {
-        let request = NSFetchRequest(Pin)
-        let pins = try! request.execute()
-        
-        print("pin count: \(pins.count)")
+        Pin.get(sortOption: .By(key: "date", ascending: false),
+                didGet: { pins in
+                    pins.forEach { print("pin date: \($0.date!)") }
+                    print("pin count: \(pins.count)")
+                    
+        })
     }
     
 }
