@@ -12,7 +12,7 @@ import RxCocoa
 import MapKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandable {
+class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType {
 
     var window: UIWindow?
 
@@ -20,22 +20,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandable {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        locationManager.requestAlwaysAuthorization()
-        
-        locationManager.rx_didUpdateLocations
-            .subscribeNext { lcations in
-//                print("Past: \(lcations.last!.coordinate)")
-            }
-            .addDisposableTo(disposeBag)
-        
-        locationManager.startUpdatingLocation()
-        
         return true
     }
     
     func applicationWillResignActive(application: UIApplication) {
+        backgrounUpdateLocationIfAvailable()
+    }
+    
+    func applicationWillEnterForeground(application: UIApplication) {
+       foregrounUpdateLocationIfAvailable()
+    }
+}
+
+protocol LocationHandlerType { }
+extension LocationHandlerType where Self: NSObject {
+    var locationManager: CLLocationManager {
+        return AppDelegate.alocationManager
+    }
+    
+    func startUpdatingLocation(didUpdate:(CLLocation) -> Void) {
+        locationManager.requestAlwaysAuthorization()
         
+        locationManager.rx_didUpdateLocations
+            .subscribeNext { lcations in
+                didUpdate(lcations.last!)
+            }
+            .addDisposableTo(disposeBag)
+        
+        locationManager.startUpdatingLocation()
+    }
+    
+    func backgrounUpdateLocationIfAvailable() {
         if CLLocationManager.significantLocationChangeMonitoringAvailable() {
             locationManager.stopUpdatingLocation()
             locationManager.startMonitoringSignificantLocationChanges()
@@ -44,19 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandable {
         }
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
+    func foregrounUpdateLocationIfAvailable() {
         if CLLocationManager.significantLocationChangeMonitoringAvailable() {
             locationManager.stopMonitoringSignificantLocationChanges()
             locationManager.startUpdatingLocation()
         } else {
             print("Significant location change monitoring is not available.")
         }
-    }
-}
-
-protocol LocationHandable { }
-extension LocationHandable {
-    var locationManager: CLLocationManager {
-        return AppDelegate.alocationManager
     }
 }

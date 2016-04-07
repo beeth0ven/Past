@@ -11,18 +11,35 @@ import RxCocoa
 import MapKit
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, LocationHandlerType {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    private let dateSource = CoreDataSource<UITableViewCell, Pin>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
-        
-        NSManagedObject.Context.createContext()
-        
-        observe(identifier: .ManagedObjectContextDidChange,
-                didReceiveNotification: { (_) in
-                    print("UpdateUI")
-        })
+        setupCoreData()
+        setupDateSource()
+    }
+    
+    private func setupCoreData() {
+        NSManagedObject.Context.getConext { [weak self] in
+            self?.reloadData()
+            self?.startUpdatingLocation { Pin.insert(location: $0) }
+        }
+    }
+    
+    private func setupDateSource() {
+        dateSource.tableView = tableView
+        dateSource.configureCellForObject = { cell, pin in
+            cell.textLabel?.text = pin.date?.description
+        }
+    }
+    
+    private func reloadData() {
+        print(#function)
+        dateSource.setup(sortOption: .By(key: "date", ascending: false))
     }
     
     @IBAction func addPin(sender: UIBarButtonItem) {
@@ -30,11 +47,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func refresh(sender: UIBarButtonItem) {
-        Pin.get(sortOption: .By(key: "date", ascending: false),
-                didGet: { pins in
-                    pins.forEach { print("pin date: \($0.date!)") }
-                    print("pin count: \(pins.count)")
-                    
+        Pin.get(
+            sortOption: .By(key: "date", ascending: false),
+            didGet: { pins in
+                pins.forEach { print("pin date: \($0.date!)") }
+                print("pin count: \(pins.count)")
+                
         })
     }
     

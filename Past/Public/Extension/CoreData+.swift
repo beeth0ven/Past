@@ -8,7 +8,6 @@
 
 import CoreData
 
-extension NSManagedObject: ManagedObjectType {}
 
 extension NSFetchRequest {
     convenience init<MO: NSManagedObject>(_ entityType: MO.Type) {
@@ -21,11 +20,11 @@ extension NSFetchRequest {
 }
 
 protocol ManagedObjectType { }
+extension NSManagedObject: ManagedObjectType {}
 
 extension ManagedObjectType where Self: NSManagedObject {
     static func insert(inContext context: NSManagedObject.Context = .Main) -> Self {
-        print(#function)
-        print(String(self))
+        print(#function + String(self))
         let entityDescription = NSEntityDescription.entityForName(String(self), inManagedObjectContext: context.value!)!
         return self.init(entity: entityDescription, insertIntoManagedObjectContext: context.value)
     }
@@ -34,21 +33,17 @@ extension ManagedObjectType where Self: NSManagedObject {
         predicate: NSPredicate? = nil,
         sortOption: NSSortDescriptor.Option? = nil,
         context: NSManagedObject.Context = .Main,
-        didGet: ([Self]) -> Void,
-        didFail: ((NSError) -> Void)? = nil
+        didGet: ([Self]) -> Void
         ) {
         let request = NSFetchRequest(self)
         request.predicate = predicate
         request.sortDescriptors = sortOption.flatMap { [$0.sortDescriptor] }
         
-        do {
-            let result =  try context.value.executeFetchRequest(request) as! [Self]
-            didGet(result)
-        } catch {
-            didFail?(error as NSError)
-        }
+        let result =  try! context.value.executeFetchRequest(request) as! [Self]
+        didGet(result)
     }
 }
+
 
 extension NSSortDescriptor {
     enum Option {

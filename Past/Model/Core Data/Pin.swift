@@ -8,13 +8,22 @@
 
 import Foundation
 import CoreData
-
+import MapKit
 
 class Pin: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    static func insert(location location: CLLocation ,inContext context: NSManagedObject.Context = .Main) -> Pin {
+        let pin = Pin.insert(inContext: context)
+        pin.latitude = location.coordinate.latitude
+        pin.longitude = location.coordinate.longitude
+        pin.date = location.timestamp
+        print("Pin: \(pin.coordinate)")
+        return pin
+    }
+}
 
-    override func awakeFromInsert() {
-        date = NSDate()
+extension Pin: MKAnnotation {
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude!.doubleValue, longitude: longitude!.doubleValue)
     }
 }
