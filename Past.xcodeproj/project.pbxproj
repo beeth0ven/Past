@@ -23,6 +23,10 @@
 		45237A341CAB6DDC00C636A6 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45237A331CAB6DDC00C636A6 /* Queue.swift */; };
 		45237A3B1CAB7FFD00C636A6 /* UIKit+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45237A3A1CAB7FFD00C636A6 /* UIKit+.swift */; };
 		45237A3D1CABACE500C636A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45237A3C1CABACE500C636A6 /* MapKit.framework */; };
+		455F28EB1CB6AE9B002AE5DA /* LocationHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28EA1CB6AE9B002AE5DA /* LocationHandlerType.swift */; };
+		455F28ED1CB6AEE4002AE5DA /* MapKit+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28EC1CB6AEE4002AE5DA /* MapKit+.swift */; };
+		455F28EF1CB6AF13002AE5DA /* CoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28EE1CB6AF13002AE5DA /* CoreDataSource.swift */; };
+		455F28F11CB6AF3C002AE5DA /* CoreDataHanderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28F01CB6AF3C002AE5DA /* CoreDataHanderType.swift */; };
 		DB8D57A5CF3C648F83B31326 /* Pods_Past.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73FCCCFF985E56E3CC4F904 /* Pods_Past.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +51,10 @@
 		45237A331CAB6DDC00C636A6 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		45237A3A1CAB7FFD00C636A6 /* UIKit+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+.swift"; sourceTree = "<group>"; };
 		45237A3C1CABACE500C636A6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		455F28EA1CB6AE9B002AE5DA /* LocationHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHandlerType.swift; sourceTree = "<group>"; };
+		455F28EC1CB6AEE4002AE5DA /* MapKit+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapKit+.swift"; sourceTree = "<group>"; };
+		455F28EE1CB6AF13002AE5DA /* CoreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSource.swift; sourceTree = "<group>"; };
+		455F28F01CB6AF3C002AE5DA /* CoreDataHanderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHanderType.swift; sourceTree = "<group>"; };
 		E73FCCCFF985E56E3CC4F904 /* Pods_Past.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Past.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83184B19F396629F4CC69FF /* Pods-Past.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Past.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Past/Pods-Past.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +174,7 @@
 			children = (
 				45237A331CAB6DDC00C636A6 /* Queue.swift */,
 				451FD1081CAEB3FC003DCAA0 /* Context.swift */,
+				455F28EE1CB6AF13002AE5DA /* CoreDataSource.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -178,6 +187,7 @@
 				451341861CB4EA460098C24F /* RxCocoa+.swift */,
 				4513418A1CB4F5020098C24F /* Notification+.swift */,
 				451341901CB502750098C24F /* CoreData+.swift */,
+				455F28EC1CB6AEE4002AE5DA /* MapKit+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -185,6 +195,8 @@
 		45237A361CAB6DFE00C636A6 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				455F28EA1CB6AE9B002AE5DA /* LocationHandlerType.swift */,
+				455F28F01CB6AF3C002AE5DA /* CoreDataHanderType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -333,11 +345,15 @@
 				451341851CB4E9F60098C24F /* Foundation+.swift in Sources */,
 				4513418B1CB4F5020098C24F /* Notification+.swift in Sources */,
 				4513418E1CB4F6D90098C24F /* Pin+CoreDataProperties.swift in Sources */,
+				455F28ED1CB6AEE4002AE5DA /* MapKit+.swift in Sources */,
 				45237A2D1CAB67DC00C636A6 /* ViewController.swift in Sources */,
 				451341871CB4EA460098C24F /* RxCocoa+.swift in Sources */,
 				45237A341CAB6DDC00C636A6 /* Queue.swift in Sources */,
 				451341911CB502750098C24F /* CoreData+.swift in Sources */,
+				455F28F11CB6AF3C002AE5DA /* CoreDataHanderType.swift in Sources */,
 				451341831CB4E3CA0098C24F /* Past.xcdatamodeld in Sources */,
+				455F28EF1CB6AF13002AE5DA /* CoreDataSource.swift in Sources */,
+				455F28EB1CB6AE9B002AE5DA /* LocationHandlerType.swift in Sources */,
 				451FD1091CAEB3FC003DCAA0 /* Context.swift in Sources */,
 				45237A111CAB608600C636A6 /* AppDelegate.swift in Sources */,
 			);

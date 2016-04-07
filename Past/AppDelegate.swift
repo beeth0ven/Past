@@ -10,16 +10,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 import MapKit
+import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType {
+class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, CoreDataHanderType {
 
     var window: UIWindow?
 
-    static let alocationManager = CLLocationManager()
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        setupCoreData { [unowned self] in self.locationManager.startUpdatingLocation() }
         return true
     }
     
@@ -30,41 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType {
     func applicationWillEnterForeground(application: UIApplication) {
        foregrounUpdateLocationIfAvailable()
     }
-}
-
-protocol LocationHandlerType { }
-extension LocationHandlerType where Self: NSObject {
-    var locationManager: CLLocationManager {
-        return AppDelegate.alocationManager
-    }
     
-    func startUpdatingLocation(didUpdate:(CLLocation) -> Void) {
-        locationManager.requestAlwaysAuthorization()
-        
-        locationManager.rx_didUpdateLocations
-            .subscribeNext { lcations in
-                didUpdate(lcations.last!)
-            }
-            .addDisposableTo(disposeBag)
-        
-        locationManager.startUpdatingLocation()
-    }
-    
-    func backgrounUpdateLocationIfAvailable() {
-        if CLLocationManager.significantLocationChangeMonitoringAvailable() {
-            locationManager.stopUpdatingLocation()
-            locationManager.startMonitoringSignificantLocationChanges()
-        } else {
-            print("Significant location change monitoring is not available.")
-        }
-    }
-    
-    func foregrounUpdateLocationIfAvailable() {
-        if CLLocationManager.significantLocationChangeMonitoringAvailable() {
-            locationManager.stopMonitoringSignificantLocationChanges()
-            locationManager.startUpdatingLocation()
-        } else {
-            print("Significant location change monitoring is not available.")
-        }
+    func didUpdateLocations(locations: [CLLocation]) {
+        Pin.insert(location: locations.last!)
     }
 }

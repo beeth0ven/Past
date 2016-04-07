@@ -11,7 +11,7 @@ import RxCocoa
 import MapKit
 import CoreData
 
-class ViewController: UIViewController, LocationHandlerType {
+class ViewController: UIViewController, CoreDataHanderType {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,20 +19,14 @@ class ViewController: UIViewController, LocationHandlerType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCoreData()
         setupDateSource()
-    }
-    
-    private func setupCoreData() {
-        NSManagedObject.Context.getConext { [weak self] in
-            self?.reloadData()
-            self?.startUpdatingLocation { Pin.insert(location: $0) }
-        }
+        setupCoreData { [unowned self] in self.reloadData() }
     }
     
     private func setupDateSource() {
         dateSource.tableView = tableView
         dateSource.configureCellForObject = { cell, pin in
+            cell.detailTextLabel?.text = pin.coordinate.description
             cell.textLabel?.text = pin.date?.description
         }
     }

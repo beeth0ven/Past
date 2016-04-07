@@ -8,7 +8,6 @@
 
 import CoreData
 
-
 extension NSFetchRequest {
     convenience init<MO: NSManagedObject>(_ entityType: MO.Type) {
         self.init(entityName: String(MO))

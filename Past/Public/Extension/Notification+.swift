@@ -33,11 +33,11 @@ extension NSNotification.Identifier {
 }
 
 extension NSObject {
-    func postNotification(identifier identifier: NSNotification.Identifier) {
+    func postNotificationWithIdentifier(identifier: NSNotification.Identifier) {
         identifier.post(object: self)
     }
     
-    func observe(identifier identifier: NSNotification.Identifier, didReceiveNotification: (NSNotification) -> Void) {
+    func observeForIdentifier(identifier: NSNotification.Identifier, didReceiveNotification: (NSNotification) -> Void) {
         identifier.observe(disposeBag: disposeBag, didReceiveNotification: didReceiveNotification)
     }
 }
