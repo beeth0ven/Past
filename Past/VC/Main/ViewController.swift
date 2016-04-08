@@ -27,7 +27,7 @@ class ViewController: UIViewController, CoreDataHanderType {
         dateSource.tableView = tableView
         dateSource.configureCellForObject = { cell, pin in
             cell.detailTextLabel?.text = pin.coordinate.description
-            cell.textLabel?.text = pin.date?.description
+            cell.textLabel?.text = pin.date?.detail
         }
     }
     
@@ -49,5 +49,13 @@ class ViewController: UIViewController, CoreDataHanderType {
                 
         })
     }
-    
+}
+
+extension NSDate {
+    var detail: String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .ShortStyle
+        dateFormatter.timeStyle = .MediumStyle
+        return dateFormatter.stringFromDate(self)
+    }
 }
