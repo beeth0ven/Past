@@ -14,11 +14,11 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, CoreDataHanderType {
-
+    
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        setupCoreData { [unowned self] in self.locationManager.startUpdatingLocation() }
+        locationHandleApplicationDidFinishLaunchingWithOptions(launchOptions)
         return true
     }
     
@@ -28,6 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, Core
     
     func applicationWillEnterForeground(application: UIApplication) {
        foregrounUpdateLocationIfAvailable()
+    }
+    
+    func applicationDidEnterBackground(application: UIApplication) {
+        saveManagedObjectContext()
+    }
+    
+    func applicationWillTerminate(application: UIApplication) {
+        saveManagedObjectContext()
     }
     
     func didUpdateLocations(locations: [CLLocation]) {

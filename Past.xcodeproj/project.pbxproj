@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		451341831CB4E3CA0098C24F /* Past.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 451341811CB4E3CA0098C24F /* Past.xcdatamodeld */; };
+		451341831CB4E3CA0098C24F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 451341811CB4E3CA0098C24F /* Model.xcdatamodeld */; };
 		451341851CB4E9F60098C24F /* Foundation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451341841CB4E9F60098C24F /* Foundation+.swift */; };
 		451341871CB4EA460098C24F /* RxCocoa+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451341861CB4EA460098C24F /* RxCocoa+.swift */; };
 		4513418B1CB4F5020098C24F /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513418A1CB4F5020098C24F /* Notification+.swift */; };
@@ -32,7 +32,7 @@
 
 /* Begin PBXFileReference section */
 		05781A893D48E213706D10B9 /* Pods-Past.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Past.release.xcconfig"; path = "Pods/Target Support Files/Pods-Past/Pods-Past.release.xcconfig"; sourceTree = "<group>"; };
-		451341821CB4E3CA0098C24F /* Past.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Past.xcdatamodel; sourceTree = "<group>"; };
+		451341821CB4E3CA0098C24F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		451341841CB4E9F60098C24F /* Foundation+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+.swift"; sourceTree = "<group>"; };
 		451341861CB4EA460098C24F /* RxCocoa+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxCocoa+.swift"; sourceTree = "<group>"; };
 		4513418A1CB4F5020098C24F /* Notification+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 			children = (
 				4513418C1CB4F6D90098C24F /* Pin+CoreDataProperties.swift */,
 				4513418D1CB4F6D90098C24F /* Pin.swift */,
-				451341811CB4E3CA0098C24F /* Past.xcdatamodeld */,
+				451341811CB4E3CA0098C24F /* Model.xcdatamodeld */,
 			);
 			name = "Core Data";
 			path = ..;
@@ -351,7 +351,7 @@
 				45237A341CAB6DDC00C636A6 /* Queue.swift in Sources */,
 				451341911CB502750098C24F /* CoreData+.swift in Sources */,
 				455F28F11CB6AF3C002AE5DA /* CoreDataHanderType.swift in Sources */,
-				451341831CB4E3CA0098C24F /* Past.xcdatamodeld in Sources */,
+				451341831CB4E3CA0098C24F /* Model.xcdatamodeld in Sources */,
 				455F28EF1CB6AF13002AE5DA /* CoreDataSource.swift in Sources */,
 				455F28EB1CB6AE9B002AE5DA /* LocationHandlerType.swift in Sources */,
 				451FD1091CAEB3FC003DCAA0 /* Context.swift in Sources */,
@@ -516,14 +516,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		451341811CB4E3CA0098C24F /* Past.xcdatamodeld */ = {
+		451341811CB4E3CA0098C24F /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				451341821CB4E3CA0098C24F /* Past.xcdatamodel */,
+				451341821CB4E3CA0098C24F /* Model.xcdatamodel */,
 			);
-			currentVersion = 451341821CB4E3CA0098C24F /* Past.xcdatamodel */;
-			name = Past.xcdatamodeld;
-			path = "Model/Core Data/Past.xcdatamodeld";
+			currentVersion = 451341821CB4E3CA0098C24F /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = "Model/Core Data/Model.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

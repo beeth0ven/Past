@@ -11,7 +11,7 @@ import RxCocoa
 import MapKit
 import CoreData
 
-class ViewController: UIViewController, CoreDataHanderType {
+class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,7 +20,7 @@ class ViewController: UIViewController, CoreDataHanderType {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDateSource()
-        setupCoreData { [unowned self] in self.reloadData() }
+        reloadData()
     }
     
     private func setupDateSource() {

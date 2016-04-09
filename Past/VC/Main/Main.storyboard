@@ -21,11 +21,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="o0K-23-POK">
-                                    <rect key="frame" x="0.0" y="64" width="600" height="256"/>
+                                    <rect key="frame" x="0.0" y="64" width="600" height="320"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0G-fr-RoH">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="256"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="320"/>
                                         </mapView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.92156862750000001" green="0.84705882349999995" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,7 +38,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" textLabel="28t-fW-bgb" detailTextLabel="sUy-f8-JX0" style="IBUITableViewCellStyleSubtitle" id="cCl-FH-ENy">
-                                        <rect key="frame" x="0.0" y="348" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="412" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cCl-FH-ENy" id="fx7-x5-2sr">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>

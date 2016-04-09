@@ -24,7 +24,7 @@ extension NSManagedObject: ManagedObjectType {}
 extension ManagedObjectType where Self: NSManagedObject {
     static func insert(inContext context: NSManagedObject.Context = .Main) -> Self {
         print(#function + String(self))
-        let entityDescription = NSEntityDescription.entityForName(String(self), inManagedObjectContext: context.value!)!
+        let entityDescription = NSEntityDescription.entityForName(String(self), inManagedObjectContext: context.value)!
         return self.init(entity: entityDescription, insertIntoManagedObjectContext: context.value)
     }
     

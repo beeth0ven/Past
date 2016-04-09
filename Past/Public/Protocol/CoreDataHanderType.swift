@@ -11,11 +11,12 @@ import CoreData
 
 protocol CoreDataHanderType {}
 
-extension CoreDataHanderType where Self: NSObject {
-    /// Need unowned self in didSetup Closure
-    func setupCoreData(didSetup didSetup: () -> Void) {
-        NSManagedObject.Context.createContextIfNeeded()
-        observeForIdentifier(.ManagedObjectContextDidChange, didReceiveNotification: { _ in didSetup() })
+extension CoreDataHanderType {
+    func saveManagedObjectContext() {
+        do {
+            try NSManagedObject.Context.Main.value.save()
+        } catch let error as NSError {
+            fatalError(error.localizedDescription)
+        }
     }
 }
-
