@@ -14,6 +14,7 @@ import CoreData
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mapView: MKMapView!
     
     private let dateSource = CoreDataSource<UITableViewCell, Pin>()
     
@@ -44,12 +45,27 @@ class ViewController: UIViewController {
         Pin.get(
             sortOption: .By(key: "date", ascending: false),
             didGet: { pins in
-                pins.forEach { print("pin date: \($0.date!)") }
-                print("pin count: \(pins.count)")
-                
+                let pins = pins.filter { $0.date!.timeIntervalSinceNow > -12*60*60 }
+                self.reloadMapViewWithPins(pins)
         })
     }
+    
+    private func reloadMapViewWithPins(pins: [Pin]) {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(pins)
+        mapView.showAnnotations(pins, animated: true)
+    }
 }
+
+extension ViewController: MKMapViewDelegate {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation { return nil }
+        let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "MKPinAnnotationView")
+        return pinAnnotationView
+    }
+}
+
+
 
 extension NSDate {
     var detail: String {

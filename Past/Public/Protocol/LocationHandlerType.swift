@@ -26,7 +26,8 @@ extension LocationHandlerType where Self: NSObject {
                 self.didUpdateLocations(locations)
             }
             .addDisposableTo(disposeBag)
-        
+        manager.distanceFilter = 20
+        manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestAlwaysAuthorization()
         objc_setAssociatedObject(self, &AssociatedKeys.LocationManager, manager, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return manager
