@@ -61,6 +61,7 @@ extension ViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
         let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "MKPinAnnotationView")
+        pinAnnotationView.canShowCallout = true
         return pinAnnotationView
     }
 }

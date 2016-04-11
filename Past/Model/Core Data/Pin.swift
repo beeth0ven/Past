@@ -29,4 +29,8 @@ extension Pin: MKAnnotation {
             longitude: longitude!.doubleValue + 0.00544
         )
     }
+    
+    var title: String? {
+        return date?.detail
+    }
 }
