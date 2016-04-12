@@ -52,6 +52,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func refresh(sender: UIBarButtonItem) {
+        mapView.showAnnotations(mapView.annotations, animated: true)
     }
     
 }
