@@ -11,6 +11,10 @@ import RxSwift
 import RxCocoa
 import MapKit
 
+struct LocationConstants {
+    static let distanceFilter = 100.0
+}
+
 protocol LocationHandlerType {
     func didUpdateLocations(locations: [CLLocation])
 }
@@ -26,7 +30,7 @@ extension LocationHandlerType where Self: NSObject {
                 self.didUpdateLocations(locations)
             }
             .addDisposableTo(disposeBag)
-        manager.distanceFilter = 100
+        manager.distanceFilter = LocationConstants.distanceFilter
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestAlwaysAuthorization()
         objc_setAssociatedObject(self, &AssociatedKeys.LocationManager, manager, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

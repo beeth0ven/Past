@@ -51,6 +51,13 @@ class CoreDataSource<CL: UITableViewCell ,MO: NSManagedObject>: NSObject, UITabl
         return cell
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let object = fetchedResultsController!.objectAtIndexPath(indexPath) as! NSManagedObject
+            object.delete()
+        }
+    }
+    
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
     }

@@ -38,23 +38,38 @@ class ViewController: UIViewController {
         mapDelegate.mapView = mapView
         mapDelegate.configureViewForObject = { view, pin in
             view.canShowCallout = true
+            view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+            view.rightCalloutAccessoryView?.tintColor = UIColor.redColor()
+        }
+        mapDelegate.didSelectCalloutAccessoryView = { _, pin in
+            pin.delete()
         }
     }
     
     private func reloadData() {
         print(#function)
-        let sortOption = NSSortDescriptor.Option.By(key: "date", ascending: false)
-        dateSource.setup(sortOption: sortOption)
-        mapDelegate.setup(sortOption: sortOption)
+        dateSource.setup(sortOption: .By(key: "date", ascending: false))
+        reloadMapView()
     }
     
     @IBAction func addPin(sender: UIBarButtonItem) {
     }
     
     @IBAction func refresh(sender: UIBarButtonItem) {
-        mapView.showAnnotations(mapView.annotations, animated: true)
+        reloadMapView()
     }
     
+    private func reloadMapView() {
+        let date = NSDate(timeIntervalSinceNow: -12*60*60)
+        let predicate = NSPredicate(format: "date > %@", date)
+        mapDelegate.setup(
+            predicate: predicate,
+            sortOption: .By(key: "date", ascending: false)
+        )
+    }
+    
+
+
 }
 
 

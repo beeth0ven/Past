@@ -28,6 +28,10 @@ extension ManagedObjectType where Self: NSManagedObject {
         return self.init(entity: entityDescription, insertIntoManagedObjectContext: context.value)
     }
     
+    func delete() {
+        managedObjectContext?.deleteObject(self)
+    }
+    
     static func get(predicate
         predicate: NSPredicate? = nil,
         sortOption: NSSortDescriptor.Option? = nil,

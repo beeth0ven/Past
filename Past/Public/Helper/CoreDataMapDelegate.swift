@@ -13,7 +13,8 @@ import MapKit
 class CoreDataMapDelegate<AV: MKAnnotationView ,MO: NSManagedObject>: NSObject, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
     weak var mapView: MKMapView! { didSet { mapView.delegate = self } }
     var configureViewForObject: ((AV, MO) -> Void)?
-
+    var didSelectCalloutAccessoryView: ((UIView, MO) -> Void)?
+    
     func setup(predicate
         predicate: NSPredicate? = nil,
         sortOption: NSSortDescriptor.Option? = nil,
@@ -30,8 +31,8 @@ class CoreDataMapDelegate<AV: MKAnnotationView ,MO: NSManagedObject>: NSObject, 
             sectionNameKeyPath: nil,
             cacheName: nil)
         try! fetchedResultsController?.performFetch()
-        mapView.addAnnotations(fetchedResultsController!.fetchedObjects as! [MKAnnotation])
-        mapView.showAnnotations(mapView.annotations, animated: true)
+        
+        reloadMapView()
     }
     
     private var fetchedResultsController: NSFetchedResultsController? { didSet { fetchedResultsController?.delegate = self } }
@@ -43,21 +44,31 @@ class CoreDataMapDelegate<AV: MKAnnotationView ,MO: NSManagedObject>: NSObject, 
         return view
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        print(#function)
-        switch type {
-        case .Insert:
-            let annotation = controller.objectAtIndexPath(newIndexPath!) as! MKAnnotation
-            mapView.addAnnotation(annotation)
-        case .Update:
-            break
-        case .Move:
-            break
-        case .Delete:
-            let annotation = controller.objectAtIndexPath(indexPath!) as! MKAnnotation
-            mapView.removeAnnotation(annotation)
-
-        }
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        let lineView = MKPolylineRenderer(overlay: overlay)
+        lineView.strokeColor = UIColor.greenColor()
+        return lineView
     }
     
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        mapView.deselectAnnotation(view.annotation, animated: true)
+        didSelectCalloutAccessoryView?(control, view.annotation as! MO)
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        reloadMapView()
+    }
+    
+    private func reloadMapView() {
+        let annotations = fetchedResultsController!.fetchedObjects as! [MKAnnotation]
+        
+        mapView.removeOverlays(mapView.overlays)
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(annotations)
+        mapView.showAnnotations(mapView.annotations, animated: true)
+        
+        var coordinates = annotations.map { $0.coordinate }
+        let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+        mapView.addOverlay(polyline)
+    }
 }
