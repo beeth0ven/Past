@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         mapDelegate.mapView = mapView
         mapDelegate.configureViewForObject = { view, pin in
             view.canShowCallout = true
+            view.draggable = true
             view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
             view.rightCalloutAccessoryView?.tintColor = UIColor.redColor()
         }

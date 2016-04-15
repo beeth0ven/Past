@@ -11,7 +11,7 @@ import CoreData
 import MapKit
 
 class Pin: NSManagedObject {
-
+    
     static func insert(location location: CLLocation ,inContext context: NSManagedObject.Context = .Main) -> Pin? {
         if let previousPin = previousPin {
             let previousLocation = CLLocation(latitude: previousPin.coordinate.latitude, longitude: previousPin.coordinate.longitude)
@@ -21,8 +21,8 @@ class Pin: NSManagedObject {
         }
         
         let pin = Pin.insert(inContext: context)
-        pin.latitude = location.coordinate.latitude
-        pin.longitude = location.coordinate.longitude
+        pin.latitude = location.coordinate.chineseLatitude
+        pin.longitude = location.coordinate.chineseLongitude
         pin.date = location.timestamp
         print("Pin: \(pin.coordinate)")
         return pin
@@ -42,13 +42,29 @@ class Pin: NSManagedObject {
 
 extension Pin: MKAnnotation {
     var coordinate: CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(
-            latitude: latitude!.doubleValue - 0.00244,
-            longitude: longitude!.doubleValue + 0.00544
-        )
+        get {
+            return CLLocationCoordinate2D(
+                latitude: latitude!.doubleValue,
+                longitude: longitude!.doubleValue
+            )
+        }
+        set {
+            latitude = newValue.latitude
+            longitude = newValue.longitude
+        }
     }
     
     var title: String? {
         return date?.detail
+    }
+}
+
+extension CLLocationCoordinate2D {
+    var chineseLatitude: CLLocationDegrees {
+        return latitude - 0.002435
+    }
+    
+    var chineseLongitude: CLLocationDegrees {
+        return longitude + 0.00543
     }
 }

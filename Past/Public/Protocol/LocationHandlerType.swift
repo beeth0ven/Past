@@ -39,10 +39,9 @@ extension LocationHandlerType where Self: NSObject {
     
     func locationHandleApplicationDidFinishLaunchingWithOptions(launchOptions: [NSObject: AnyObject]?) {
         if launchOptions?[UIApplicationLaunchOptionsLocationKey] != nil {
-            locationManager.startMonitoringSignificantLocationChanges()
+            didUpdateLocations([CLLocationManager().location!])
         } else {
             locationManager.startUpdatingLocation()
-            
         }
     }
     
