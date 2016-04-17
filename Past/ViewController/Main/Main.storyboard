@@ -20,6 +20,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z47-cw-Ni0">
                                 <rect key="frame" x="0.0" y="268" width="600" height="268"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="VNh-YK-xF4">
+                                    <rect key="frame" x="0.0" y="72" width="600" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" textLabel="28t-fW-bgb" detailTextLabel="sUy-f8-JX0" style="IBUITableViewCellStyleSubtitle" id="cCl-FH-ENy">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
@@ -81,7 +86,7 @@
                                 <action selector="refresh:" destination="BYZ-38-t0r" id="BIa-6V-R1O"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MBo-fO-flg">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="MBo-fO-flg">
                             <connections>
                                 <action selector="addPin:" destination="BYZ-38-t0r" id="4Ls-Op-6aq"/>
                             </connections>

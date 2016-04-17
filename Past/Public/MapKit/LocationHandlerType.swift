@@ -27,17 +27,17 @@ extension LocationHandlerType where Self: NSObject {
         return manager
     }
     
-    func getVisit(didGet didGet: (CLVisit) -> Void) {
+    func monitoringVisit(didMonitor didMonitor: (CLVisit) -> Void) {
         locationManager.rx_didVisit
-            .subscribeNext(didGet)
+            .subscribeNext(didMonitor)
             .addDisposableTo(disposeBag)
         locationManager.requestAlwaysAuthorizationIfNeeded()
         locationManager.startMonitoringVisits()
     }
     
-    func getLocations(didGet didGet: ([CLLocation]) -> Void) {
+    func updatingLocations(didUpdate didUpdate: ([CLLocation]) -> Void) {
         locationManager.rx_didUpdateLocations
-            .subscribeNext(didGet)
+            .subscribeNext(didUpdate)
             .addDisposableTo(disposeBag)
         locationManager.requestAlwaysAuthorizationIfNeeded()
         locationManager.stopUpdatingLocation()

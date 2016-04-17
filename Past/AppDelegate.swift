@@ -13,15 +13,15 @@ import MapKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, CoreDataHanderType {
+class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, CoreDataHandlerType {
     
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        getVisit(didGet: { Stay.insert(visit: $0) })
+        monitoringVisit(didMonitor: { Stay.insert(visit: $0) })
         return true
     }
-
+    
     func applicationDidEnterBackground(application: UIApplication) {
         saveManagedObjectContext()
     }

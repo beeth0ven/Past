@@ -1,5 +1,5 @@
 //
-//  CoreDataHanderType.swift
+//  CoreDataHandlerType.swift
 //  Past
 //
 //  Created by luojie on 16/4/7.
@@ -9,9 +9,9 @@
 import Foundation
 import CoreData
 
-protocol CoreDataHanderType {}
+protocol CoreDataHandlerType {}
 
-extension CoreDataHanderType {
+extension CoreDataHandlerType {
     func saveManagedObjectContext() {
         let context = NSManagedObject.Context.Main.value
         guard context.hasChanges else { return }
