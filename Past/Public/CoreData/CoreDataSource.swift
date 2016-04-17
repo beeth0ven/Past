@@ -80,7 +80,7 @@ class CoreDataSource<CL: UITableViewCell ,MO: NSManagedObject>: NSObject, UITabl
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
         case .Update:
             let object = fetchedResultsController!.objectAtIndexPath(indexPath!) as! MO
-            let cell = tableView.cellForRowAtIndexPath(indexPath!) as! CL
+            guard let cell = tableView.cellForRowAtIndexPath(indexPath!) as? CL else { return }
             configureCellForObject?(cell, object)
         case .Move:
             tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
