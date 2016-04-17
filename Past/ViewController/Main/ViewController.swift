@@ -16,8 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     
-    private let dateSource = CoreDataSource<UITableViewCell, Pin>()
-    private let mapDelegate = CoreDataMapDelegate<MKPinAnnotationView, Pin>()
+    private let dateSource = CoreDataSource<UITableViewCell, Stay>()
+    private let mapDelegate = CoreDataMapDelegate<MKPinAnnotationView, Stay>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +28,9 @@ class ViewController: UIViewController {
     
     private func setupDateSource() {
         dateSource.tableView = tableView
-        dateSource.configureCellForObject = { cell, pin in
-            cell.detailTextLabel?.text = pin.coordinate.description
-            cell.textLabel?.text = pin.date?.detail
+        dateSource.configureCellForObject = { cell, stay in
+            cell.textLabel?.text = stay.title
+            cell.detailTextLabel?.text = stay.subtitle
         }
     }
     
@@ -42,14 +42,14 @@ class ViewController: UIViewController {
             view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
             view.rightCalloutAccessoryView?.tintColor = UIColor.redColor()
         }
-        mapDelegate.didSelectCalloutAccessoryView = { _, pin in
-            pin.delete()
+        mapDelegate.didSelectCalloutAccessoryView = { _, stay in
+            stay.delete()
         }
     }
     
     private func reloadData() {
         print(#function)
-        dateSource.setup(sortOption: .By(key: "date", ascending: false))
+        reloadTableView()
         reloadMapView()
     }
     
@@ -60,6 +60,10 @@ class ViewController: UIViewController {
         reloadMapView()
     }
     
+    private func reloadTableView() {
+        dateSource.setup(sortOption: .By(key: "date", ascending: false))
+    }
+    
     private func reloadMapView() {
         let date = NSDate(timeIntervalSinceNow: -12*60*60)
         let predicate = NSPredicate(format: "date > %@", date)
@@ -68,17 +72,6 @@ class ViewController: UIViewController {
             sortOption: .By(key: "date", ascending: false)
         )
     }
-    
-
-
 }
 
 
-extension NSDate {
-    var detail: String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .ShortStyle
-        dateFormatter.timeStyle = .MediumStyle
-        return dateFormatter.stringFromDate(self)
-    }
-}

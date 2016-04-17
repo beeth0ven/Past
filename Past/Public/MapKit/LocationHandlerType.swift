@@ -15,9 +15,7 @@ struct LocationConstants {
     static let distanceFilter = 100.0
 }
 
-protocol LocationHandlerType {
-    func didUpdateLocations(locations: [CLLocation])
-}
+protocol LocationHandlerType { }
 
 extension LocationHandlerType where Self: NSObject {
     var locationManager: CLLocationManager {
@@ -25,24 +23,24 @@ extension LocationHandlerType where Self: NSObject {
             return manager
         }
         let manager = CLLocationManager()
-        manager.rx_didUpdateLocations
-            .subscribeNext { [unowned self] locations in
-                self.didUpdateLocations(locations)
-            }
-            .addDisposableTo(disposeBag)
-        manager.distanceFilter = LocationConstants.distanceFilter
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestAlwaysAuthorization()
         objc_setAssociatedObject(self, &AssociatedKeys.LocationManager, manager, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return manager
     }
     
-    func locationHandleApplicationDidFinishLaunchingWithOptions(launchOptions: [NSObject: AnyObject]?) {
-        if launchOptions?[UIApplicationLaunchOptionsLocationKey] != nil {
-            didUpdateLocations([CLLocationManager().location!])
-        } else {
-            locationManager.startUpdatingLocation()
-        }
+    func getVisit(didGet didGet: (CLVisit) -> Void) {
+        locationManager.rx_didVisit
+            .subscribeNext(didGet)
+            .addDisposableTo(disposeBag)
+        locationManager.requestAlwaysAuthorizationIfNeeded()
+        locationManager.startMonitoringVisits()
+    }
+    
+    func getLocations(didGet didGet: ([CLLocation]) -> Void) {
+        locationManager.rx_didUpdateLocations
+            .subscribeNext(didGet)
+            .addDisposableTo(disposeBag)
+        locationManager.requestAlwaysAuthorizationIfNeeded()
+        locationManager.stopUpdatingLocation()
     }
     
     func backgrounUpdateLocationIfAvailable() {

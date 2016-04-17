@@ -5,7 +5,11 @@
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
+    <entity name="Stay" representedClassName=".Visit" parentEntity="Pin" syncable="YES">
+        <attribute name="optionRawValue" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Pin" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Stay" positionX="-63" positionY="9" width="128" height="60"/>
     </elements>
 </model>

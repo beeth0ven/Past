@@ -18,18 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, Core
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        locationHandleApplicationDidFinishLaunchingWithOptions(launchOptions)
+        getVisit(didGet: { Stay.insert(visit: $0) })
         return true
     }
-    
-    func applicationWillResignActive(application: UIApplication) {
-        backgrounUpdateLocationIfAvailable()
-    }
-    
-    func applicationWillEnterForeground(application: UIApplication) {
-       foregrounUpdateLocationIfAvailable()
-    }
-    
+
     func applicationDidEnterBackground(application: UIApplication) {
         saveManagedObjectContext()
     }
@@ -38,7 +30,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, Core
         saveManagedObjectContext()
     }
     
-    func didUpdateLocations(locations: [CLLocation]) {
-        Pin.insert(location: locations.last!)
-    }
 }

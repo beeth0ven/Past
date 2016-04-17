@@ -55,16 +55,11 @@ extension Pin: MKAnnotation {
     }
     
     var title: String? {
-        return date?.detail
+        return date!.detail
+    }
+    
+    var subtitle: String? {
+        return coordinate.description
     }
 }
 
-extension CLLocationCoordinate2D {
-    var chineseLatitude: CLLocationDegrees {
-        return latitude - 0.002435
-    }
-    
-    var chineseLongitude: CLLocationDegrees {
-        return longitude + 0.00543
-    }
-}
