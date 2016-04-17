@@ -151,7 +151,8 @@
 		45237A0F1CAB608600C636A6 /* Past */ = {
 			isa = PBXGroup;
 			children = (
-				45237A251CAB66C200C636A6 /* VC */,
+				45237A101CAB608600C636A6 /* AppDelegate.swift */,
+				45237A251CAB66C200C636A6 /* ViewController */,
 				45237A381CAB6F4700C636A6 /* Model */,
 				45237A2E1CAB6A9700C636A6 /* Public */,
 				45237A221CAB612E00C636A6 /* Supporting Files */,
@@ -162,7 +163,6 @@
 		45237A221CAB612E00C636A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				45237A101CAB608600C636A6 /* AppDelegate.swift */,
 				45237A2F1CAB6C2100C636A6 /* Past.entitlements */,
 				45237A171CAB608600C636A6 /* Assets.xcassets */,
 				45237A191CAB608600C636A6 /* LaunchScreen.storyboard */,
@@ -171,12 +171,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		45237A251CAB66C200C636A6 /* VC */ = {
+		45237A251CAB66C200C636A6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				45237A291CAB67DC00C636A6 /* Main */,
 			);
-			path = VC;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		45237A291CAB67DC00C636A6 /* Main */ = {
@@ -192,10 +192,10 @@
 			isa = PBXGroup;
 			children = (
 				451D0EE21CC31AA700B01E2B /* CoreData */,
-				451D0EE41CC31D4100B01E2B /* Foundation */,
 				45237A361CAB6DFE00C636A6 /* MapKit */,
-				451D0EE31CC31CEA00B01E2B /* UIKit */,
 				45237A321CAB6DD700C636A6 /* GCD */,
+				451D0EE31CC31CEA00B01E2B /* UIKit */,
+				451D0EE41CC31D4100B01E2B /* Foundation */,
 				45237A351CAB6DFE00C636A6 /* Extension */,
 			);
 			path = Public;
