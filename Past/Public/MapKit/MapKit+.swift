@@ -28,40 +28,6 @@ extension CLLocationCoordinate2D {
     }
 }
 
-extension CLVisit {
-    enum Option: Int, CustomStringConvertible {
-        case Arrival
-        case Departure
-        
-        var description: String {
-            switch self {
-            case .Arrival:
-                return "Arrived"
-            case .Departure:
-                return "Leaved"
-            }
-        }
-    }
-    
-    var option: Option {
-        if departureDate == NSDate.distantFuture() {
-            return .Arrival
-        } else if arrivalDate == NSDate.distantPast() {
-            return .Departure
-        }
-        fatalError("Visit option should be either arrive or departure.")
-    }
-    
-    var date: NSDate {
-        switch option {
-        case .Arrival:
-            return arrivalDate
-        case .Departure:
-            return departureDate
-        }
-    }
-}
-
 extension CLLocationManager {
     func requestAlwaysAuthorizationIfNeeded() {
         if CLLocationManager.authorizationStatus() == .NotDetermined {  requestAlwaysAuthorization() }

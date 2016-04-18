@@ -48,7 +48,6 @@ class ViewController: UIViewController {
     }
     
     private func reloadData() {
-        print(#function)
         reloadTableView()
         reloadMapView()
     }

@@ -2,7 +2,7 @@
 //  Stay+CoreDataProperties.swift
 //  Past
 //
-//  Created by luojie on 16/4/17.
+//  Created by luojie on 16/4/18.
 //  Copyright © 2016年 LuoJie. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,5 +15,7 @@ import CoreData
 extension Stay {
 
     @NSManaged var optionRawValue: NSNumber?
+    @NSManaged var arrivalDate: NSDate?
+    @NSManaged var departureDate: NSDate?
 
 }
