@@ -56,20 +56,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func refresh(sender: UIBarButtonItem) {
-        reloadMapView()
+        reloadData()
     }
     
     private func reloadTableView() {
-        dateSource.setup(sortOption: .By(key: "date", ascending: false))
+        dateSource.setup()
     }
     
     private func reloadMapView() {
-        let date = NSDate(timeIntervalSinceNow: -12*60*60)
+        let date = NSDate(timeIntervalSinceNow: -0.5.days)
         let predicate = NSPredicate(format: "date > %@", date)
-        mapDelegate.setup(
-            predicate: predicate,
-            sortOption: .By(key: "date", ascending: false)
-        )
+        mapDelegate.setup(predicate: predicate)
     }
 }
 

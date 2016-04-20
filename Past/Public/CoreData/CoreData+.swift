@@ -34,16 +34,14 @@ extension ManagedObjectType where Self: NSManagedObject {
     
     static func get(predicate
         predicate: NSPredicate? = nil,
-        sortOption: NSSortDescriptor.Option? = nil,
-        context: NSManagedObject.Context = .Main,
-        didGet: ([Self]) -> Void
-        ) {
+        sortOption: NSSortDescriptor.Option? = .By(key: "date", ascending: false),
+        context: NSManagedObject.Context = .Main
+        ) -> [Self] {
         let request = NSFetchRequest(self)
         request.predicate = predicate
         request.sortDescriptors = sortOption.flatMap { [$0.sortDescriptor] }
-        
-        let result =  try! context.value.executeFetchRequest(request) as! [Self]
-        didGet(result)
+
+        return try! context.value.executeFetchRequest(request) as! [Self]
     }
 }
 

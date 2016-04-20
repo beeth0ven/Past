@@ -28,6 +28,26 @@ extension CLLocationCoordinate2D {
     }
 }
 
+extension CLVisit {
+    enum Option: Int {
+        case Arrival
+        case Departure
+        case Visit
+    }
+    
+    var option: Option {
+        let past = NSDate.distantPast() , future = NSDate.distantFuture()
+        switch (arrivalDate, departureDate) {
+        case (_, future):
+            return .Arrival
+        case (past, _):
+            return .Departure
+        default:
+            return .Visit
+        }
+    }
+}
+
 extension CLLocationManager {
     func requestAlwaysAuthorizationIfNeeded() {
         if CLLocationManager.authorizationStatus() == .NotDetermined {  requestAlwaysAuthorization() }

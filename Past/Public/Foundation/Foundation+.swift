@@ -12,10 +12,17 @@ import RxCocoa
 
 extension NSDate {
     var detail: String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .ShortStyle
-        dateFormatter.timeStyle = .MediumStyle
-        return dateFormatter.stringFromDate(self)
+        switch self {
+        case NSDate.distantPast():
+            return "Past"
+        case NSDate.distantFuture():
+            return "Future"
+        default:
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = .NoStyle
+            dateFormatter.timeStyle = .ShortStyle
+            return dateFormatter.stringFromDate(self)
+        }
     }
 }
 
@@ -35,5 +42,18 @@ extension NSTimeInterval {
     
     var weeks: NSTimeInterval {
         return self * 7 * 24 * 60 * 60
+    }
+    
+    var timeText: String {
+        switch self {
+        case 0..<1.0.minutes:
+            return String(format: "%i seconds", Int(self))
+        case 1.0.minutes..<1.0.hours:
+            return String(format: "%i minutes", Int(self/1.0.minutes))
+        case 1.0.hours..<1.0.days:
+            return String(format: "%.1f hours", self/1.0.hours)
+        default:
+            return String(format: "%.1f days", self/1.0.days)
+        }
     }
 }

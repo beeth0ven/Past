@@ -17,7 +17,7 @@ class CoreDataMapDelegate<AV: MKAnnotationView ,MO: NSManagedObject>: NSObject, 
     
     func setup(predicate
         predicate: NSPredicate? = nil,
-        sortOption: NSSortDescriptor.Option? = nil,
+        sortOption: NSSortDescriptor.Option? = .By(key: "date", ascending: false),
         context: NSManagedObject.Context = .Main
         ) {
         
