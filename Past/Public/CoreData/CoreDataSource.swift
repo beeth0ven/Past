@@ -16,7 +16,7 @@ class CoreDataSource<CL: UITableViewCell ,MO: NSManagedObject>: NSObject, UITabl
     
     func setup(predicate
         predicate: NSPredicate? = nil,
-        sortOption: NSSortDescriptor.Option? = .By(key: "date", ascending: false),
+        sortOption: NSSortDescriptor.Option? = .By(key: "creationDate", ascending: false),
         context: NSManagedObject.Context = .Main
         ) {
         
@@ -30,7 +30,11 @@ class CoreDataSource<CL: UITableViewCell ,MO: NSManagedObject>: NSObject, UITabl
             managedObjectContext: context.value,
             sectionNameKeyPath: nil,
             cacheName: nil)
-        try! fetchedResultsController?.performFetch()
+        do {
+            try fetchedResultsController?.performFetch()
+        } catch let error as NSError {
+            fatalError(error.localizedDescription)
+        }
         tableView.reloadData()
     }
     

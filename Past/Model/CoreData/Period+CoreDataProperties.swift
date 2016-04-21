@@ -1,5 +1,5 @@
 //
-//  Pin+CoreDataProperties.swift
+//  Period+CoreDataProperties.swift
 //  Past
 //
 //  Created by luojie on 16/4/22.
@@ -12,12 +12,13 @@
 import Foundation
 import CoreData
 
-extension Pin {
+extension Period {
 
+    @NSManaged var arrivalDate: NSDate?
+    @NSManaged var departureDate: NSDate?
     @NSManaged var optionRawValue: NSNumber?
-    @NSManaged var longitude: NSNumber?
-    @NSManaged var latitude: NSNumber?
-    @NSManaged var stayPeriod: Period?
-    @NSManaged var transitionPeriod: Period?
+    @NSManaged var timeInterval: NSNumber?
+    @NSManaged var stayPin: Pin?
+    @NSManaged var transitionPins: NSOrderedSet?
 
 }

@@ -16,8 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     
-    private let dateSource = CoreDataSource<UITableViewCell, Stay>()
-    private let mapDelegate = CoreDataMapDelegate<MKPinAnnotationView, Stay>()
+    private let dateSource = CoreDataSource<UITableViewCell, Period>()
+    private let mapDelegate = CoreDataMapDelegate<MKPinAnnotationView, Period>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +28,9 @@ class ViewController: UIViewController {
     
     private func setupDateSource() {
         dateSource.tableView = tableView
-        dateSource.configureCellForObject = { cell, stay in
-            cell.textLabel?.text = stay.title
-            cell.detailTextLabel?.text = stay.subtitle
+        dateSource.configureCellForObject = { cell, period in
+            cell.textLabel?.text = period.title
+            cell.detailTextLabel?.text = period.subtitle
         }
     }
     
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     
     private func reloadMapView() {
         let date = NSDate(timeIntervalSinceNow: -0.5.days)
-        let predicate = NSPredicate(format: "date > %@", date)
+        let predicate = NSPredicate(format: "creationDate > %@ AND optionRawValue = %@", date, Period.Option.Stay.rawValue)
         mapDelegate.setup(predicate: predicate)
     }
 }

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, Core
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        monitoringVisit(didMonitor: { Stay.insert(visit: $0) })
+        monitoringVisit(didMonitor: { Period.insert(visit: $0) })
         return true
     }
     

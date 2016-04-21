@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4512635D1CC3A1C5008F17CE /* Stay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512635B1CC3A1C5008F17CE /* Stay.swift */; };
-		451263631CC3D76E008F17CE /* Stay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451263621CC3D76E008F17CE /* Stay+CoreDataProperties.swift */; };
 		451341851CB4E9F60098C24F /* Foundation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451341841CB4E9F60098C24F /* Foundation+.swift */; };
 		451341871CB4EA460098C24F /* RxCocoa+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451341861CB4EA460098C24F /* RxCocoa+.swift */; };
 		4513418B1CB4F5020098C24F /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513418A1CB4F5020098C24F /* Notification+.swift */; };
@@ -16,6 +14,10 @@
 		4513418F1CB4F6D90098C24F /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513418D1CB4F6D90098C24F /* Pin.swift */; };
 		451341911CB502750098C24F /* CoreData+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451341901CB502750098C24F /* CoreData+.swift */; };
 		451D0EE71CC31E5700B01E2B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 451D0EE51CC31E5700B01E2B /* Model.xcdatamodeld */; };
+		451E61421CC927C300C40168 /* RootObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61401CC927C300C40168 /* RootObject+CoreDataProperties.swift */; };
+		451E61431CC927C300C40168 /* RootObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61411CC927C300C40168 /* RootObject.swift */; };
+		451E61461CC9281800C40168 /* Period+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61441CC9281800C40168 /* Period+CoreDataProperties.swift */; };
+		451E61471CC9281800C40168 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61451CC9281800C40168 /* Period.swift */; };
 		451FD1091CAEB3FC003DCAA0 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451FD1081CAEB3FC003DCAA0 /* Context.swift */; };
 		45237A111CAB608600C636A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45237A101CAB608600C636A6 /* AppDelegate.swift */; };
 		45237A181CAB608600C636A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45237A171CAB608600C636A6 /* Assets.xcassets */; };
@@ -35,8 +37,6 @@
 
 /* Begin PBXFileReference section */
 		05781A893D48E213706D10B9 /* Pods-Past.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Past.release.xcconfig"; path = "Pods/Target Support Files/Pods-Past/Pods-Past.release.xcconfig"; sourceTree = "<group>"; };
-		4512635B1CC3A1C5008F17CE /* Stay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Stay.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		451263621CC3D76E008F17CE /* Stay+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Stay+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		451341841CB4E9F60098C24F /* Foundation+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+.swift"; sourceTree = "<group>"; };
 		451341861CB4EA460098C24F /* RxCocoa+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxCocoa+.swift"; sourceTree = "<group>"; };
 		4513418A1CB4F5020098C24F /* Notification+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
@@ -44,6 +44,10 @@
 		4513418D1CB4F6D90098C24F /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		451341901CB502750098C24F /* CoreData+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreData+.swift"; sourceTree = "<group>"; };
 		451D0EE61CC31E5700B01E2B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		451E61401CC927C300C40168 /* RootObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RootObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		451E61411CC927C300C40168 /* RootObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootObject.swift; sourceTree = "<group>"; };
+		451E61441CC9281800C40168 /* Period+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Period+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		451E61451CC9281800C40168 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		451FD1081CAEB3FC003DCAA0 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		45237A0D1CAB608600C636A6 /* Past.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Past.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45237A101CAB608600C636A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -99,8 +103,10 @@
 		451341801CB4E3820098C24F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				451263621CC3D76E008F17CE /* Stay+CoreDataProperties.swift */,
-				4512635B1CC3A1C5008F17CE /* Stay.swift */,
+				451E61441CC9281800C40168 /* Period+CoreDataProperties.swift */,
+				451E61451CC9281800C40168 /* Period.swift */,
+				451E61401CC927C300C40168 /* RootObject+CoreDataProperties.swift */,
+				451E61411CC927C300C40168 /* RootObject.swift */,
 				4513418C1CB4F6D90098C24F /* Pin+CoreDataProperties.swift */,
 				4513418D1CB4F6D90098C24F /* Pin.swift */,
 				451D0EE51CC31E5700B01E2B /* Model.xcdatamodeld */,
@@ -372,14 +378,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				451263631CC3D76E008F17CE /* Stay+CoreDataProperties.swift in Sources */,
 				45237A3B1CAB7FFD00C636A6 /* UIKit+.swift in Sources */,
 				4513418F1CB4F6D90098C24F /* Pin.swift in Sources */,
 				451341851CB4E9F60098C24F /* Foundation+.swift in Sources */,
+				451E61471CC9281800C40168 /* Period.swift in Sources */,
 				4513418B1CB4F5020098C24F /* Notification+.swift in Sources */,
 				4513418E1CB4F6D90098C24F /* Pin+CoreDataProperties.swift in Sources */,
 				451D0EE71CC31E5700B01E2B /* Model.xcdatamodeld in Sources */,
 				455F28ED1CB6AEE4002AE5DA /* MapKit+.swift in Sources */,
+				451E61421CC927C300C40168 /* RootObject+CoreDataProperties.swift in Sources */,
 				45237A2D1CAB67DC00C636A6 /* ViewController.swift in Sources */,
 				451341871CB4EA460098C24F /* RxCocoa+.swift in Sources */,
 				45237A341CAB6DDC00C636A6 /* Queue.swift in Sources */,
@@ -387,10 +394,11 @@
 				455F28F11CB6AF3C002AE5DA /* CoreDataHandlerType.swift in Sources */,
 				455F28EF1CB6AF13002AE5DA /* CoreDataSource.swift in Sources */,
 				455F28EB1CB6AE9B002AE5DA /* LocationHandlerType.swift in Sources */,
-				4512635D1CC3A1C5008F17CE /* Stay.swift in Sources */,
+				451E61461CC9281800C40168 /* Period+CoreDataProperties.swift in Sources */,
 				451FD1091CAEB3FC003DCAA0 /* Context.swift in Sources */,
 				452FCBB71CBC03F500297C32 /* CoreDataMapDelegate.swift in Sources */,
 				45237A111CAB608600C636A6 /* AppDelegate.swift in Sources */,
+				451E61431CC927C300C40168 /* RootObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
