@@ -6,8 +6,6 @@
 //  Copyright © 2016年 LuoJie. All rights reserved.
 //
 
-
-
 import Foundation
 import RxSwift
 import RxCocoa
@@ -26,5 +24,13 @@ extension NSObject {
             .rx_notification(name)
             .subscribeNext(didReceiveNotification)
             .addDisposableTo(disposeBag)
+    }
+}
+
+extension NSNotification {
+    func post() {
+        NSNotificationCenter
+        .defaultCenter()
+        .postNotification(self)
     }
 }
