@@ -16,7 +16,7 @@ class Stay: Pin {
     static func insert(visit visit: CLVisit ,inContext context: NSManagedObject.Context = .Main) -> Stay {
         
         if visit.option == .Visit {
-            let predicate = NSPredicate(format: " date = %@ ", visit.arrivalDate)
+            let predicate = NSPredicate(format: " arrivalDate = %@ ", visit.arrivalDate)
             let stays = Stay.get(predicate: predicate)
             if let stay = stays.first {
                 stay.update(visit: visit)
@@ -40,7 +40,7 @@ class Stay: Pin {
     override var title: String? {
         let date = departureDate != NSDate.distantFuture() ? departureDate! : NSDate()
         let timeInterval = date.timeIntervalSinceDate(arrivalDate!)
-        return arrivalDate!.detail + " ~~ " + departureDate!.detail + "  " + timeInterval.timeText
+        return arrivalDate!.detail + " ~~ " + departureDate!.detail + " ( \(timeInterval.timeText))"
     }
     
     override func awakeFromInsert() {
