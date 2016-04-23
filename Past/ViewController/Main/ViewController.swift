@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     private let dateSource = CoreDataSource<UITableViewCell, Period>()
-    private let mapDelegate = CoreDataMapDelegate<MKPinAnnotationView, Period>()
+    private let mapDelegate = CoreDataMapDelegate<MKPinAnnotationView, Pin>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,11 @@ class ViewController: UIViewController {
         dateSource.tableView = tableView
         dateSource.configureCellForObject = { cell, period in
             cell.textLabel?.text = period.title
-            cell.detailTextLabel?.text = period.subtitle
+            cell.detailTextLabel?.text = period.subTitle
+        }
+        dateSource.didSelectObject = { [unowned self] period in
+            let predicate = NSPredicate(format: "%@ IN stayPeriods", period)
+            self.mapDelegate.setup(predicate: predicate)
         }
     }
     
@@ -39,11 +43,6 @@ class ViewController: UIViewController {
         mapDelegate.configureViewForObject = { view, pin in
             view.canShowCallout = true
             view.draggable = true
-            view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
-            view.rightCalloutAccessoryView?.tintColor = UIColor.redColor()
-        }
-        mapDelegate.didSelectCalloutAccessoryView = { _, stay in
-            stay.delete()
         }
     }
     
@@ -64,10 +63,15 @@ class ViewController: UIViewController {
     }
     
     private func reloadMapView() {
-        let date = NSDate(timeIntervalSinceNow: -0.5.days)
-        let predicate = NSPredicate(format: "creationDate > %@ AND optionRawValue = %@", date, Period.Option.Stay.rawValue)
+        let date = NSDate(timeIntervalSinceNow: -1.0.days)
+        let predicate = NSPredicate(format: "creationDate > %@ AND optionRawValue = %@", date, Period.Option.Stay.rawValue.toNumber)
         mapDelegate.setup(predicate: predicate)
     }
 }
 
+extension Int {
+    var toNumber: NSNumber {
+        return NSNumber(integer: self)
+    }
+}
 

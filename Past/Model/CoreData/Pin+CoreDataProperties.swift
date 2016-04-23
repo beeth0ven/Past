@@ -2,7 +2,7 @@
 //  Pin+CoreDataProperties.swift
 //  Past
 //
-//  Created by luojie on 16/4/22.
+//  Created by luojie on 16/4/23.
 //  Copyright © 2016年 LuoJie. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,10 +14,10 @@ import CoreData
 
 extension Pin {
 
-    @NSManaged var optionRawValue: NSNumber?
-    @NSManaged var longitude: NSNumber?
     @NSManaged var latitude: NSNumber?
-    @NSManaged var stayPeriod: Period?
+    @NSManaged var longitude: NSNumber?
+    @NSManaged var optionRawValue: NSNumber?
+    @NSManaged var stayPeriods: NSOrderedSet?
     @NSManaged var transitionPeriod: Period?
 
 }

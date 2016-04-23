@@ -2,7 +2,7 @@
 //  RootObject+CoreDataProperties.swift
 //  Past
 //
-//  Created by luojie on 16/4/22.
+//  Created by luojie on 16/4/23.
 //  Copyright © 2016年 LuoJie. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu

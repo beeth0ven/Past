@@ -18,16 +18,6 @@ extension CLLocationCoordinate2D: CustomStringConvertible {
     }
 }
 
-extension CLLocationCoordinate2D {
-    var chineseLatitude: CLLocationDegrees {
-        return latitude - 0.002435
-    }
-    
-    var chineseLongitude: CLLocationDegrees {
-        return longitude + 0.00543
-    }
-}
-
 extension CLVisit {
     enum Option: Int {
         case Arrival

@@ -15,15 +15,15 @@ class Pin: RootObject {
     static func insert(location location: CLLocation ,inContext context: NSManagedObject.Context = .Main) -> Pin? {
         
         let pin = Pin.insert(inContext: context)
-        pin.latitude = location.coordinate.chineseLatitude
-        pin.longitude = location.coordinate.chineseLongitude
+        pin.coordinate = location.localizedCoordinate
         pin.creationDate = location.timestamp
         print("Pin: \(pin.coordinate)")
         return pin
     }
     
     var option: Period.Option {
-        return Period.Option(rawValue: optionRawValue!.integerValue)!
+        get { return Period.Option(rawValue: optionRawValue!.integerValue)! }
+        set { optionRawValue = newValue.rawValue }
     }
 }
 
@@ -42,7 +42,17 @@ extension Pin: MKAnnotation {
     }
     
     var title: String? {
-        return creationDate!.detail
+        switch option {
+        case .Stay:
+            let period = stayPeriods!.firstObject as! Period
+            
+            
+            let date = period.departureDate != NSDate.distantFuture() ? period.departureDate! : NSDate()
+            let timeInterval = date.timeIntervalSinceDate(period.arrivalDate!)
+            return period.arrivalDate!.detail + " ~~ " + period.departureDate!.detail + "  " + timeInterval.timeText
+        case .Transition:
+            return creationDate!.detail
+        }
     }
     
     var subtitle: String? {

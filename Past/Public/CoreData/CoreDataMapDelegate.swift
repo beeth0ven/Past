@@ -65,7 +65,9 @@ class CoreDataMapDelegate<AV: MKAnnotationView ,MO: NSManagedObject>: NSObject, 
         mapView.removeOverlays(mapView.overlays)
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(annotations)
-        mapView.showAnnotations(mapView.annotations, animated: true)
+        Queue.Main.execute { 
+            self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+        }
         
         var coordinates = annotations.map { $0.coordinate }
         let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)

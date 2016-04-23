@@ -35,32 +35,29 @@ class Period: RootObject {
     }
     
     var option: Option {
-        return Option(rawValue: optionRawValue!.integerValue)!
+        get { return Option(rawValue: optionRawValue!.integerValue)! }
+        set { optionRawValue = newValue.rawValue }
     }
     
     func update(visit visit: CLVisit) {
         if stayPin == nil { stayPin = Pin.insert() }
-        stayPin!.latitude = visit.coordinate.chineseLatitude
-        stayPin!.longitude = visit.coordinate.chineseLongitude
+        stayPin?.coordinate = visit.localizedCoordinate
         arrivalDate = visit.arrivalDate
         departureDate = visit.departureDate
         if visit.option == .Visit { timeInterval = departureDate!.timeIntervalSinceDate(arrivalDate!) }
     }
 }
-extension Period: MKAnnotation {
-    var coordinate: CLLocationCoordinate2D {
-        get { return stayPin!.coordinate }
-        set { stayPin!.coordinate = newValue }
+
+extension Period {
+    var title: String {
+         return arrivalDate!.detail + " ~~ " + departureDate!.detail
     }
     
-    var title: String? {
+    var subTitle: String {
         let date = departureDate != NSDate.distantFuture() ? departureDate! : NSDate()
         let timeInterval = date.timeIntervalSinceDate(arrivalDate!)
-        return arrivalDate!.detail + " ~~ " + departureDate!.detail + "  " + timeInterval.timeText
-    }
-    
-    var subtitle: String? {
-        return coordinate.description
+        return timeInterval.timeText
     }
 }
+
 

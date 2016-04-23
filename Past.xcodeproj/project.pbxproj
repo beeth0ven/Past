@@ -18,6 +18,7 @@
 		451E61431CC927C300C40168 /* RootObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61411CC927C300C40168 /* RootObject.swift */; };
 		451E61461CC9281800C40168 /* Period+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61441CC9281800C40168 /* Period+CoreDataProperties.swift */; };
 		451E61471CC9281800C40168 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61451CC9281800C40168 /* Period.swift */; };
+		451E61491CCA49C700C40168 /* LocalizedCoordinateConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61481CCA49C700C40168 /* LocalizedCoordinateConvertable.swift */; };
 		451FD1091CAEB3FC003DCAA0 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451FD1081CAEB3FC003DCAA0 /* Context.swift */; };
 		45237A111CAB608600C636A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45237A101CAB608600C636A6 /* AppDelegate.swift */; };
 		45237A181CAB608600C636A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45237A171CAB608600C636A6 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		451E61411CC927C300C40168 /* RootObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootObject.swift; sourceTree = "<group>"; };
 		451E61441CC9281800C40168 /* Period+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Period+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		451E61451CC9281800C40168 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		451E61481CCA49C700C40168 /* LocalizedCoordinateConvertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedCoordinateConvertable.swift; sourceTree = "<group>"; };
 		451FD1081CAEB3FC003DCAA0 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		45237A0D1CAB608600C636A6 /* Past.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Past.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45237A101CAB608600C636A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -235,6 +237,7 @@
 			children = (
 				455F28EC1CB6AEE4002AE5DA /* MapKit+.swift */,
 				455F28EA1CB6AE9B002AE5DA /* LocationHandlerType.swift */,
+				451E61481CCA49C700C40168 /* LocalizedCoordinateConvertable.swift */,
 			);
 			path = MapKit;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				451341871CB4EA460098C24F /* RxCocoa+.swift in Sources */,
 				45237A341CAB6DDC00C636A6 /* Queue.swift in Sources */,
 				451341911CB502750098C24F /* CoreData+.swift in Sources */,
+				451E61491CCA49C700C40168 /* LocalizedCoordinateConvertable.swift in Sources */,
 				455F28F11CB6AF3C002AE5DA /* CoreDataHandlerType.swift in Sources */,
 				455F28EF1CB6AF13002AE5DA /* CoreDataSource.swift in Sources */,
 				455F28EB1CB6AE9B002AE5DA /* LocationHandlerType.swift in Sources */,
