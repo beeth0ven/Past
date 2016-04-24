@@ -49,6 +49,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="selectedBackgroundView" destination="xwt-Jo-G6s" id="5hI-Lm-ufQ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -98,6 +101,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="xwt-Jo-G6s">
+                    <rect key="frame" x="0.0" y="0.0" width="596" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.66902792453765869" green="0.73128575086593628" blue="0.94889926910400391" alpha="0.5" colorSpace="calibratedRGB"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="1167" y="462"/>
         </scene>

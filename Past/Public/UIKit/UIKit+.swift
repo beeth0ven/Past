@@ -44,3 +44,10 @@ extension UITableView {
         return dequeueReusableCellWithIdentifier(identifier) as? T
     }
 }
+
+extension UIViewController {
+    func viewFromNibWithType<T: UIView>(_: T.Type) -> T? {
+        let nibName = String(T)
+        return NSBundle.mainBundle().loadNibNamed(nibName, owner: self, options: nil).first as? T
+    }
+}

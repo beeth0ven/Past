@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     private let dateSource = CoreDataSource<UITableViewCell, Period>()
     private let mapDelegate = CoreDataMapDelegate<MKPinAnnotationView, Pin>()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDateSource()
@@ -41,16 +41,22 @@ class ViewController: UIViewController {
     
     private func setupMapDelegate() {
         mapDelegate.mapView = mapView
-        mapDelegate.configureViewForObject = { view, pin in
+        mapDelegate.configureViewForObject = { [unowned self] view, pin in
             view.canShowCallout = true
             view.draggable = true
-            view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
-            view.detailCalloutAccessoryView = RideRequestButton(dropoffCoordinate: pin.coordinate)
+            view.detailCalloutAccessoryView = self.detailCalloutAccessoryViewForPin(pin)
         }
         mapDelegate.didSelectCalloutAccessoryView = {  _, pin in
         }
     }
   
+    private func detailCalloutAccessoryViewForPin(pin: Pin) -> DetailCalloutAccessoryView {
+        let detailCalloutAccessoryView = viewFromNibWithType(DetailCalloutAccessoryView)!
+        let button = RideRequestButton(dropoffCoordinate: pin.coordinate, address: pin.placeInfo?.name)
+        detailCalloutAccessoryView.stackView.insertArrangedSubview(button, atIndex: 0)
+        return detailCalloutAccessoryView
+    }
+    
     @IBAction func addPin(sender: UIBarButtonItem) {
     }
     
@@ -73,7 +79,4 @@ class ViewController: UIViewController {
         mapDelegate.setup(predicate: predicate)
     }
 }
-
-
-
 
