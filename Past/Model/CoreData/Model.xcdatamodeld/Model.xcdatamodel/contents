@@ -14,7 +14,7 @@
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="optionRawValue" attributeType="Integer 16" defaultValueString="0.0" spotlightIndexingEnabled="YES" syncable="YES"/>
-        <relationship name="placeInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceInfo" inverseName="pin" inverseEntity="PlaceInfo" syncable="YES"/>
+        <relationship name="placeInfo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PlaceInfo" inverseName="pin" inverseEntity="PlaceInfo" syncable="YES"/>
         <relationship name="stayPeriods" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Period" inverseName="stayPin" inverseEntity="Period" syncable="YES"/>
         <relationship name="transitionPeriod" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Period" inverseName="transitionPins" inverseEntity="Period" syncable="YES"/>
     </entity>
@@ -28,8 +28,8 @@
     </entity>
     <elements>
         <element name="Period" positionX="-189" positionY="-117" width="128" height="163"/>
-        <element name="Pin" positionX="27" positionY="-73" width="128" height="133"/>
+        <element name="Pin" positionX="27" positionY="-90" width="128" height="133"/>
         <element name="RootObject" positionX="-189" positionY="-267" width="128" height="58"/>
-        <element name="PlaceInfo" positionX="225" positionY="-72" width="128" height="88"/>
+        <element name="PlaceInfo" positionX="216" positionY="-81" width="128" height="88"/>
     </elements>
 </model>

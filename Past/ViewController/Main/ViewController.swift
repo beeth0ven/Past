@@ -47,21 +47,20 @@ class ViewController: UIViewController {
             view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
             view.detailCalloutAccessoryView = RideRequestButton(dropoffCoordinate: pin.coordinate)
         }
-        mapDelegate.didSelectCalloutAccessoryView = { [unowned self] _, pin in
-            self.performSegueWithIdentifier(.SearchWithPin, sender: pin)
+        mapDelegate.didSelectCalloutAccessoryView = {  _, pin in
         }
     }
-    
-    private func reloadData() {
-        reloadTableView()
-        reloadMapView()
-    }
-    
+  
     @IBAction func addPin(sender: UIBarButtonItem) {
     }
     
     @IBAction func refresh(sender: UIBarButtonItem) {
         reloadData()
+    }
+    
+    private func reloadData() {
+        reloadTableView()
+        reloadMapView()
     }
     
     private func reloadTableView() {
@@ -75,19 +74,6 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: SegueHandlerType {
-    enum SegueIdentifier: String {
-        case SearchWithPin
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segueIdentifierFromSegue(segue) {
-        case .SearchWithPin:
-            let mitvc = segue.destinationViewController as! MapItemsTableViewController, pin = sender as! Pin
-            mitvc.pin = pin
-        }
-    }
-}
 
 
 

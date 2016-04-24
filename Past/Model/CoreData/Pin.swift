@@ -42,7 +42,7 @@ extension Pin: MKAnnotation {
         }
     }
     
-    private func getPlaceInfoIfNeeded() {
+    func getPlaceInfoIfNeeded() {
         if placeInfo == nil {
             CLGeocoder.getPlacemarksFrom(
                 annotation: self,

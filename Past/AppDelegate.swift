@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, Core
     
     func applicationDidEnterBackground(application: UIApplication) {
         saveManagedObjectContext()
+        performCoreDataBackgroundTask()
     }
     
     func applicationWillTerminate(application: UIApplication) {
