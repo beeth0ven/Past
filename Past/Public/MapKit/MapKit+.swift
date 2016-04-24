@@ -43,3 +43,46 @@ extension CLLocationManager {
         if CLLocationManager.authorizationStatus() == .NotDetermined {  requestAlwaysAuthorization() }
     }
 }
+
+extension CLGeocoder {
+    static func getPlacemarksFrom(
+        annotation annotation: MKAnnotation,
+        didGet: ([CLPlacemark] -> Void),
+        didFail: ((NSError) -> Void)? = nil) {
+        
+        let geocoder = CLGeocoder()
+        let location = CLLocation(mapCoordinate: annotation.coordinate)
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            guard error == nil else {
+                didFail?(error!)
+                return
+            }
+            
+            didGet(placemarks!)
+        }
+    }
+}
+
+extension CLLocationCoordinate2D {
+    var mapCoordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(
+            latitude: latitude  - 0.002435,
+            longitude: longitude  + 0.00543
+        )
+    }
+}
+
+extension CLLocation {
+    convenience init(mapCoordinate: CLLocationCoordinate2D) {
+        self.init(
+            latitude: mapCoordinate.latitude + 0.002435,
+            longitude: mapCoordinate.longitude - 0.00543
+        )
+    }
+}
+
+extension CLLocation {
+    convenience init(coordinate: CLLocationCoordinate2D) {
+        self.init(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    }
+}

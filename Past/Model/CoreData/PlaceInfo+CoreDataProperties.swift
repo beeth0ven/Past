@@ -1,5 +1,5 @@
 //
-//  RootObject+CoreDataProperties.swift
+//  PlaceInfo+CoreDataProperties.swift
 //  Past
 //
 //  Created by luojie on 16/4/24.
@@ -12,8 +12,10 @@
 import Foundation
 import CoreData
 
-extension RootObject {
+extension PlaceInfo {
 
-    @NSManaged var creationDate: NSDate?
+    @NSManaged var nickname: String?
+    @NSManaged var name: String?
+    @NSManaged var pin: Pin?
 
 }

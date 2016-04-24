@@ -15,7 +15,7 @@ class Pin: RootObject {
     static func insert(location location: CLLocation ,inContext context: NSManagedObject.Context = .Main) -> Pin? {
         
         let pin = Pin.insert(inContext: context)
-        pin.coordinate = location.localizedCoordinate
+        pin.coordinate = location.coordinate.mapCoordinate
         pin.creationDate = location.timestamp
         print("Pin: \(pin.coordinate)")
         return pin
@@ -38,25 +38,30 @@ extension Pin: MKAnnotation {
         set {
             latitude = newValue.latitude
             longitude = newValue.longitude
+            getPlaceInfoIfNeeded()
+        }
+    }
+    
+    private func getPlaceInfoIfNeeded() {
+        if placeInfo == nil {
+            CLGeocoder.getPlacemarksFrom(
+                annotation: self,
+                didGet:  { [weak self] placemarks in
+                    guard let placemark = placemarks.first else { return }
+                    self?.placeInfo = PlaceInfo.insert(placemark: placemark)
+                }
+            )
         }
     }
     
     var title: String? {
         switch option {
         case .Stay:
-            let period = stayPeriods!.firstObject as! Period
-            
-            
-            let date = period.departureDate != NSDate.distantFuture() ? period.departureDate! : NSDate()
-            let timeInterval = date.timeIntervalSinceDate(period.arrivalDate!)
-            return period.arrivalDate!.detail + " ~~ " + period.departureDate!.detail + "  " + timeInterval.timeText
+            return placeInfo?.name
         case .Transition:
             return creationDate!.detail
         }
     }
     
-    var subtitle: String? {
-        return coordinate.description
-    }
 }
 

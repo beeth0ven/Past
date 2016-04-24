@@ -49,5 +49,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>uber</string>
+	</array>
+	<key>UberClientID</key>
+	<string>XpTwbzG5swPbqvddINcepF4pLIMMPDHS</string>
+	<key>UberCallbackURI</key>
+	<string>https://www.beeth0ven.cn</string>
 </dict>
 </plist>

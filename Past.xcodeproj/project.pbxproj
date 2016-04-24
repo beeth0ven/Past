@@ -18,7 +18,12 @@
 		451E61431CC927C300C40168 /* RootObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61411CC927C300C40168 /* RootObject.swift */; };
 		451E61461CC9281800C40168 /* Period+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61441CC9281800C40168 /* Period+CoreDataProperties.swift */; };
 		451E61471CC9281800C40168 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61451CC9281800C40168 /* Period.swift */; };
-		451E61491CCA49C700C40168 /* LocalizedCoordinateConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61481CCA49C700C40168 /* LocalizedCoordinateConvertable.swift */; };
+		451E616A1CCBD65200C40168 /* Uber+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61691CCBD65200C40168 /* Uber+.swift */; };
+		451E616D1CCBDCAD00C40168 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451E616C1CCBDCAD00C40168 /* CoreLocation.framework */; };
+		451E616F1CCC541C00C40168 /* MapItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E616E1CCC541C00C40168 /* MapItemsTableViewController.swift */; };
+		451E61711CCC5AA000C40168 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61701CCC5AA000C40168 /* SegueHandlerType.swift */; };
+		451E61741CCC6C1C00C40168 /* PlaceInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61721CCC6C1C00C40168 /* PlaceInfo+CoreDataProperties.swift */; };
+		451E61751CCC6C1C00C40168 /* PlaceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451E61731CCC6C1C00C40168 /* PlaceInfo.swift */; };
 		451FD1091CAEB3FC003DCAA0 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451FD1081CAEB3FC003DCAA0 /* Context.swift */; };
 		45237A111CAB608600C636A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45237A101CAB608600C636A6 /* AppDelegate.swift */; };
 		45237A181CAB608600C636A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45237A171CAB608600C636A6 /* Assets.xcassets */; };
@@ -49,7 +54,13 @@
 		451E61411CC927C300C40168 /* RootObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootObject.swift; sourceTree = "<group>"; };
 		451E61441CC9281800C40168 /* Period+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Period+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		451E61451CC9281800C40168 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
-		451E61481CCA49C700C40168 /* LocalizedCoordinateConvertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedCoordinateConvertable.swift; sourceTree = "<group>"; };
+		451E61691CCBD65200C40168 /* Uber+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Uber+.swift"; sourceTree = "<group>"; };
+		451E616C1CCBDCAD00C40168 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		451E616E1CCC541C00C40168 /* MapItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapItemsTableViewController.swift; sourceTree = "<group>"; };
+		451E61701CCC5AA000C40168 /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
+		451E61721CCC6C1C00C40168 /* PlaceInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlaceInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		451E61731CCC6C1C00C40168 /* PlaceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceInfo.swift; sourceTree = "<group>"; };
+		451E61761CCCBF1700C40168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		451FD1081CAEB3FC003DCAA0 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		45237A0D1CAB608600C636A6 /* Past.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Past.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45237A101CAB608600C636A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -76,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				451E616D1CCBDCAD00C40168 /* CoreLocation.framework in Frameworks */,
 				45237A3D1CABACE500C636A6 /* MapKit.framework in Frameworks */,
 				DB8D57A5CF3C648F83B31326 /* Pods_Past.framework in Frameworks */,
 			);
@@ -96,6 +108,7 @@
 		34035BE5634C9C6FA18A2B72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				451E616C1CCBDCAD00C40168 /* CoreLocation.framework */,
 				45237A3C1CABACE500C636A6 /* MapKit.framework */,
 				E73FCCCFF985E56E3CC4F904 /* Pods_Past.framework */,
 			);
@@ -105,6 +118,8 @@
 		451341801CB4E3820098C24F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				451E61721CCC6C1C00C40168 /* PlaceInfo+CoreDataProperties.swift */,
+				451E61731CCC6C1C00C40168 /* PlaceInfo.swift */,
 				451E61441CC9281800C40168 /* Period+CoreDataProperties.swift */,
 				451E61451CC9281800C40168 /* Period.swift */,
 				451E61401CC927C300C40168 /* RootObject+CoreDataProperties.swift */,
@@ -132,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				45237A3A1CAB7FFD00C636A6 /* UIKit+.swift */,
+				451E61701CCC5AA000C40168 /* SegueHandlerType.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -142,6 +158,14 @@
 				451341841CB4E9F60098C24F /* Foundation+.swift */,
 			);
 			path = Foundation;
+			sourceTree = "<group>";
+		};
+		451E616B1CCBD66B00C40168 /* Uber+ */ = {
+			isa = PBXGroup;
+			children = (
+				451E61691CCBD65200C40168 /* Uber+.swift */,
+			);
+			path = "Uber+";
 			sourceTree = "<group>";
 		};
 		45237A041CAB608600C636A6 = {
@@ -198,6 +222,7 @@
 			children = (
 				45237A2A1CAB67DC00C636A6 /* Main.storyboard */,
 				45237A2B1CAB67DC00C636A6 /* ViewController.swift */,
+				451E616E1CCC541C00C40168 /* MapItemsTableViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -205,6 +230,7 @@
 		45237A2E1CAB6A9700C636A6 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				451E616B1CCBD66B00C40168 /* Uber+ */,
 				451D0EE21CC31AA700B01E2B /* CoreData */,
 				45237A361CAB6DFE00C636A6 /* MapKit */,
 				45237A321CAB6DD700C636A6 /* GCD */,
@@ -237,7 +263,6 @@
 			children = (
 				455F28EC1CB6AEE4002AE5DA /* MapKit+.swift */,
 				455F28EA1CB6AE9B002AE5DA /* LocationHandlerType.swift */,
-				451E61481CCA49C700C40168 /* LocalizedCoordinateConvertable.swift */,
 			);
 			path = MapKit;
 			sourceTree = "<group>";
@@ -382,7 +407,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				45237A3B1CAB7FFD00C636A6 /* UIKit+.swift in Sources */,
+				451E616F1CCC541C00C40168 /* MapItemsTableViewController.swift in Sources */,
 				4513418F1CB4F6D90098C24F /* Pin.swift in Sources */,
+				451E61741CCC6C1C00C40168 /* PlaceInfo+CoreDataProperties.swift in Sources */,
+				451E61711CCC5AA000C40168 /* SegueHandlerType.swift in Sources */,
 				451341851CB4E9F60098C24F /* Foundation+.swift in Sources */,
 				451E61471CC9281800C40168 /* Period.swift in Sources */,
 				4513418B1CB4F5020098C24F /* Notification+.swift in Sources */,
@@ -392,9 +420,10 @@
 				451E61421CC927C300C40168 /* RootObject+CoreDataProperties.swift in Sources */,
 				45237A2D1CAB67DC00C636A6 /* ViewController.swift in Sources */,
 				451341871CB4EA460098C24F /* RxCocoa+.swift in Sources */,
+				451E616A1CCBD65200C40168 /* Uber+.swift in Sources */,
 				45237A341CAB6DDC00C636A6 /* Queue.swift in Sources */,
 				451341911CB502750098C24F /* CoreData+.swift in Sources */,
-				451E61491CCA49C700C40168 /* LocalizedCoordinateConvertable.swift in Sources */,
+				451E61751CCC6C1C00C40168 /* PlaceInfo.swift in Sources */,
 				455F28F11CB6AF3C002AE5DA /* CoreDataHandlerType.swift in Sources */,
 				455F28EF1CB6AF13002AE5DA /* CoreDataSource.swift in Sources */,
 				455F28EB1CB6AE9B002AE5DA /* LocationHandlerType.swift in Sources */,
@@ -413,6 +442,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				45237A1A1CAB608600C636A6 /* Base */,
+				451E61761CCCBF1700C40168 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -457,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -497,7 +527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

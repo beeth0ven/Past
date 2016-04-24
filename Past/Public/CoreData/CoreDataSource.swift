@@ -51,7 +51,7 @@ class CoreDataSource<CL: UITableViewCell ,MO: NSManagedObject>: NSObject, UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let object = fetchedResultsController!.objectAtIndexPath(indexPath) as! MO
-        let cell = tableView.dequeueReusableCellWithIdentifier(String(CL)) as! CL
+        let cell = tableView.dequeueReusableCellWithType(CL)!
         configureCellForObject?(cell, object)
         return cell
     }

@@ -38,3 +38,9 @@ extension CGColor {
     }
 }
 
+extension UITableView {
+    func dequeueReusableCellWithType<T: UITableViewCell>(_: T.Type) -> T? {
+        let identifier = String(T)
+        return dequeueReusableCellWithIdentifier(identifier) as? T
+    }
+}

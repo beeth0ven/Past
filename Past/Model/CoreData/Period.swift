@@ -41,10 +41,22 @@ class Period: RootObject {
     
     func update(visit visit: CLVisit) {
         if stayPin == nil { stayPin = Pin.insert() }
-        stayPin?.coordinate = visit.localizedCoordinate
+        stayPin?.coordinate = visit.coordinate.mapCoordinate
         arrivalDate = visit.arrivalDate
         departureDate = visit.departureDate
         if visit.option == .Visit { timeInterval = departureDate!.timeIntervalSinceDate(arrivalDate!) }
+    }
+    
+    override func prepareForDeletion() {
+        super.prepareForDeletion()
+        switch option {
+        case .Stay:
+            if stayPin?.stayPeriods?.count == 1 {
+                stayPin?.delete()
+            }
+        case .Transition:
+            break
+        }
     }
 }
 

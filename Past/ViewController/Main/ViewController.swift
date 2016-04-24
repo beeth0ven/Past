@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import MapKit
 import CoreData
+import UberRides
 
 class ViewController: UIViewController {
     
@@ -43,6 +44,11 @@ class ViewController: UIViewController {
         mapDelegate.configureViewForObject = { view, pin in
             view.canShowCallout = true
             view.draggable = true
+            view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+            view.detailCalloutAccessoryView = RideRequestButton(dropoffCoordinate: pin.coordinate)
+        }
+        mapDelegate.didSelectCalloutAccessoryView = { [unowned self] _, pin in
+            self.performSegueWithIdentifier(.SearchWithPin, sender: pin)
         }
     }
     
@@ -69,9 +75,19 @@ class ViewController: UIViewController {
     }
 }
 
-extension Int {
-    var toNumber: NSNumber {
-        return NSNumber(integer: self)
+extension ViewController: SegueHandlerType {
+    enum SegueIdentifier: String {
+        case SearchWithPin
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segueIdentifierFromSegue(segue) {
+        case .SearchWithPin:
+            let mitvc = segue.destinationViewController as! MapItemsTableViewController, pin = sender as! Pin
+            mitvc.pin = pin
+        }
     }
 }
+
+
 

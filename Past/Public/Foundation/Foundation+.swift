@@ -57,3 +57,9 @@ extension NSTimeInterval {
         }
     }
 }
+
+extension Int {
+    var toNumber: NSNumber {
+        return NSNumber(integer: self)
+    }
+}
