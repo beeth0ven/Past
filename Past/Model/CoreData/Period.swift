@@ -41,7 +41,7 @@ class Period: RootObject {
     
     func update(visit visit: CLVisit) {
         if stayPin == nil { stayPin = Pin.insert() }
-        stayPin?.coordinate = visit.coordinate.mapCoordinate
+        stayPin?.coordinate = visit.coordinate.toMap
         arrivalDate = visit.arrivalDate
         departureDate = visit.departureDate
         if visit.option == .Visit { timeInterval = departureDate!.timeIntervalSinceDate(arrivalDate!) }

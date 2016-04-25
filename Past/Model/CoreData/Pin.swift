@@ -15,7 +15,7 @@ class Pin: RootObject {
     static func insert(location location: CLLocation ,inContext context: NSManagedObject.Context = .Main) -> Pin? {
         
         let pin = Pin.insert(inContext: context)
-        pin.coordinate = location.coordinate.mapCoordinate
+        pin.coordinate = location.coordinate.toMap
         pin.creationDate = location.timestamp
         print("Pin: \(pin.coordinate)")
         return pin

@@ -26,7 +26,7 @@ extension CLVisit {
     }
     
     var option: Option {
-        let past = NSDate.distantPast() , future = NSDate.distantFuture()
+        let past = NSDate.distantPast(), future = NSDate.distantFuture()
         switch (arrivalDate, departureDate) {
         case (_, future):
             return .Arrival
@@ -51,7 +51,7 @@ extension CLGeocoder {
         didFail: ((NSError) -> Void)? = nil) {
         
         let geocoder = CLGeocoder()
-        let location = CLLocation(mapCoordinate: annotation.coordinate)
+        let location = CLLocation(coordinate: annotation.coordinate.toLocation)
         geocoder.reverseGeocodeLocation(location) { placemarks, error in
             guard error == nil else {
                 didFail?(error!)
@@ -64,19 +64,17 @@ extension CLGeocoder {
 }
 
 extension CLLocationCoordinate2D {
-    var mapCoordinate: CLLocationCoordinate2D {
+    var toMap: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(
             latitude: latitude  - 0.002435,
             longitude: longitude  + 0.00543
         )
     }
-}
-
-extension CLLocation {
-    convenience init(mapCoordinate: CLLocationCoordinate2D) {
-        self.init(
-            latitude: mapCoordinate.latitude + 0.002435,
-            longitude: mapCoordinate.longitude - 0.00543
+    
+    var toLocation: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(
+            latitude: latitude  + 0.002435,
+            longitude: longitude  - 0.00543
         )
     }
 }
