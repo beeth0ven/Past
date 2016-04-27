@@ -13,7 +13,7 @@ extension NSFetchRequest {
         self.init(entityName: String(MO))
     }
     
-    func execute(inContext context: NSManagedObjectContextType = Context.Main) throws -> [AnyObject] {
+    func execute(inContext context: NSManagedObject.Context = .Main) throws -> [AnyObject] {
         return try context.value.executeFetchRequest(self)
     }
 }
@@ -22,7 +22,7 @@ protocol ManagedObjectType { }
 extension NSManagedObject: ManagedObjectType {}
 
 extension ManagedObjectType where Self: NSManagedObject {
-    static func insert(inContext context: NSManagedObjectContextType = Context.Main) -> Self {
+    static func insert(inContext context: NSManagedObject.Context = .Main) -> Self {
         print(#function + String(self))
         let entityDescription = NSEntityDescription.entityForName(String(self), inManagedObjectContext: context.value)!
         return self.init(entity: entityDescription, insertIntoManagedObjectContext: context.value)
@@ -35,12 +35,12 @@ extension ManagedObjectType where Self: NSManagedObject {
     static func get(predicate
         predicate: NSPredicate? = nil,
         sortOption: NSSortDescriptor.Option? = .By(key: "creationDate", ascending: false),
-        context: NSManagedObjectContextType = Context.Main
+        context: NSManagedObject.Context = .Main
         ) -> [Self] {
         let request = NSFetchRequest(self)
         request.predicate = predicate
         request.sortDescriptors = sortOption.flatMap { [$0.sortDescriptor] }
-
+        
         return try! context.value.executeFetchRequest(request) as! [Self]
     }
 }

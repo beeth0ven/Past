@@ -18,7 +18,7 @@ class CoreDataSource<CL: UITableViewCell ,MO: NSManagedObject>: NSObject, UITabl
     func setup(predicate
         predicate: NSPredicate? = nil,
         sortOption: NSSortDescriptor.Option? = .By(key: "creationDate", ascending: false),
-        context: NSManagedObjectContextType = Context.Main
+        context: NSManagedObject.Context = .Main
         ) {
         
         let request = NSFetchRequest(MO)

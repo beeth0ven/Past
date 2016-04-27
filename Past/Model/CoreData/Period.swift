@@ -17,7 +17,7 @@ class Period: RootObject {
         case Transition
     }
     
-    static func insert(visit visit: CLVisit ,inContext context: NSManagedObjectContextType = Context.Main) -> Period {
+    static func insert(visit visit: CLVisit ,inContext context: NSManagedObject.Context = .Main) -> Period {
         
         if visit.option == .Visit {
             let predicate = NSPredicate(format: "arrivalDate = %@", visit.arrivalDate)
