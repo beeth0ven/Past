@@ -13,7 +13,7 @@ import MapKit
 
 class PlaceInfo: RootObject {
 
-    static func insert(placemark placemark: CLPlacemark ,inContext context: NSManagedObject.Context = .Main) -> PlaceInfo? {
+    static func insert(placemark placemark: CLPlacemark ,inContext context: NSManagedObjectContextType = Context.Main) -> PlaceInfo? {
         guard let name = placemark.name else { return nil }
         let placeInfo = PlaceInfo.insert()
         placeInfo.name = name

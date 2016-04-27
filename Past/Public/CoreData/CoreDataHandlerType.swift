@@ -13,7 +13,7 @@ protocol CoreDataHandlerType {}
 
 extension CoreDataHandlerType {
     func saveManagedObjectContext() {
-        let context = NSManagedObject.Context.Main.value
+        let context = Context.Main.value
         guard context.hasChanges else { return }
         do {
             try context.save()

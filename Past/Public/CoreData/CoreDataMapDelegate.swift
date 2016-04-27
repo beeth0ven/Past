@@ -18,7 +18,7 @@ class CoreDataMapDelegate<AV: MKAnnotationView ,MO: NSManagedObject>: NSObject, 
     func setup(predicate
         predicate: NSPredicate? = nil,
         sortOption: NSSortDescriptor.Option? = .By(key: "creationDate", ascending: false),
-        context: NSManagedObject.Context = .Main
+        context: NSManagedObjectContextType = Context.Main
         ) {
         
         let request = NSFetchRequest(MO)
