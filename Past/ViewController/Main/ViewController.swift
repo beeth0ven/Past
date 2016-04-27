@@ -22,9 +22,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupOberver()
         setupDateSource()
         setupMapDelegate()
         reloadData()
+    }
+    
+    private func setupOberver() {
+        observeForName(UIApplicationDidBecomeActiveNotification) { [unowned self] _ in
+            print("UIApplicationDidBecomeActiveNotification: reloadTableView")
+            self.reloadTableView()
+        }
     }
     
     private func setupDateSource() {
@@ -49,7 +57,7 @@ class ViewController: UIViewController {
         mapDelegate.didSelectCalloutAccessoryView = {  _, pin in
         }
     }
-  
+    
     private func detailCalloutAccessoryViewForPin(pin: Pin) -> DetailCalloutAccessoryView {
         let detailCalloutAccessoryView = viewFromNibWithType(DetailCalloutAccessoryView)!
         let button = RideRequestButton(dropoffCoordinate: pin.coordinate, address: pin.placeInfo?.name)
