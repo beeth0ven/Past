@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, Core
         Configuration.setRegion(.China)
         Configuration.setSandboxEnabled(true)
 
-        monitoringVisit(didMonitor: { Period.insert(visit: $0) })
+        monitoringVisit(didMonitor: { Period.update(visit: $0) })
         return true
     }
     

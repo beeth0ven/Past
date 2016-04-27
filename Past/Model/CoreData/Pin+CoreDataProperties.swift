@@ -22,3 +22,4 @@ extension Pin {
     @NSManaged var placeInfo: PlaceInfo?
 
 }
+

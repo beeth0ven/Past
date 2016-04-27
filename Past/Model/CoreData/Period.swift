@@ -17,21 +17,24 @@ class Period: RootObject {
         case Transition
     }
     
-    static func insert(visit visit: CLVisit ,inContext context: NSManagedObject.Context = .Main) -> Period {
+    static func update(visit visit: CLVisit ,inContext context: NSManagedObject.Context = .Main) {
         
         if visit.option == .Visit {
             let predicate = NSPredicate(format: "arrivalDate = %@", visit.arrivalDate)
-            let stays = Period.get(predicate: predicate)
+            let stays = Period.get(predicate: predicate, context: context)
             if let stay = stays.first {
-                stay.update(visit: visit)
-                return stay
+                stay.stayPin?.coordinate = visit.coordinate.toMap
+                stay.departureDate = visit.departureDate
+                stay.timeInterval = stay.departureDate!.timeIntervalSinceDate(stay.arrivalDate!)
+                return
             }
         }
         
         let period = Period.insert(inContext: context)
-        period.update(visit: visit)
+        period.stayPin = Pin.getFromCoordinate(visit.coordinate.toMap, inContext: context)
+        period.arrivalDate = visit.arrivalDate
+        period.departureDate = visit.departureDate
         print("Stay: \(period.stayPin!.coordinate)")
-        return period
     }
     
     var option: Option {
@@ -39,14 +42,7 @@ class Period: RootObject {
         set { optionRawValue = newValue.rawValue }
     }
     
-    func update(visit visit: CLVisit) {
-        if stayPin == nil { stayPin = Pin.insert() }
-        stayPin?.coordinate = visit.coordinate.toMap
-        arrivalDate = visit.arrivalDate
-        departureDate = visit.departureDate
-        if visit.option == .Visit { timeInterval = departureDate!.timeIntervalSinceDate(arrivalDate!) }
-    }
-    
+
     override func prepareForDeletion() {
         super.prepareForDeletion()
         switch option {

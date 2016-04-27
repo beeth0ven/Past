@@ -19,7 +19,7 @@ extension NSManagedObject {
             }
         }
         
-        private static var  managedObjectModel: NSManagedObjectModel = {
+        private static var managedObjectModel: NSManagedObjectModel = {
             let modelURL = NSBundle.mainBundle().URLForResource("Model", withExtension: "momd")!
             return NSManagedObjectModel(contentsOfURL: modelURL)!
         }()

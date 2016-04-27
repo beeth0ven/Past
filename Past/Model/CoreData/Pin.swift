@@ -21,6 +21,19 @@ class Pin: RootObject {
         return pin
     }
     
+    static func getFromCoordinate(coordinate: CLLocationCoordinate2D, inContext context: NSManagedObject.Context = .Main) -> Pin {
+
+        let predicate = NSPredicate(aroundCoordinate: coordinate)
+        let matches = Pin.get(predicate: predicate, context: context)
+        if matches.count > 0 {
+            return matches.sort(>).first!
+        } else {
+            let pin = Pin.insert(inContext: context)
+            pin.coordinate = coordinate
+            return pin
+        }
+    }
+    
     var option: Period.Option {
         get { return Period.Option(rawValue: optionRawValue!.integerValue)! }
         set { optionRawValue = newValue.rawValue }
@@ -65,3 +78,8 @@ extension Pin: MKAnnotation {
     
 }
 
+func >(left: Pin, right: Pin) -> Bool {
+    guard let leftStayPeriods = left.stayPeriods,
+        rightStayPeriods = right.stayPeriods else { return true }
+    return leftStayPeriods.count > rightStayPeriods.count
+}

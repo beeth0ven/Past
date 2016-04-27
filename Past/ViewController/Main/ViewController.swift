@@ -30,7 +30,6 @@ class ViewController: UIViewController {
     
     private func setupOberver() {
         observeForName(UIApplicationDidBecomeActiveNotification) { [unowned self] _ in
-            print("UIApplicationDidBecomeActiveNotification: reloadTableView")
             self.reloadTableView()
         }
     }

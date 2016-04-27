@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import MapKit
 
 extension NSFetchRequest {
     convenience init<MO: NSManagedObject>(_ entityType: MO.Type) {
@@ -58,4 +59,18 @@ extension NSSortDescriptor {
         }
     }
     
+}
+
+extension NSPredicate {
+    convenience init(aroundCoordinate coordinate: CLLocationCoordinate2D, delta: CLLocationDegrees = 0.0002) {
+        let minLatitude = coordinate.latitude - delta, maxLatitude = coordinate.latitude + delta
+        let minLongitude = coordinate.longitude - delta, maxLongitude = coordinate.longitude + delta
+        self.init(
+            format: "%@ < latitude AND latitude < %@ AND %@ < longitude AND longitude < %@",
+            minLatitude.toNumber,
+            maxLatitude.toNumber,
+            minLongitude.toNumber,
+            maxLongitude.toNumber
+        )
+    }
 }

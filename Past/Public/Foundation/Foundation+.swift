@@ -63,3 +63,9 @@ extension Int {
         return NSNumber(integer: self)
     }
 }
+
+extension Double {
+    var toNumber: NSNumber {
+        return NSNumber(double: self)
+    }
+}
