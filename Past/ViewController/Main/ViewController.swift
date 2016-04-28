@@ -59,7 +59,7 @@ class ViewController: UIViewController {
     
     private func detailCalloutAccessoryViewForPin(pin: Pin) -> DetailCalloutAccessoryView {
         let detailCalloutAccessoryView = viewFromNibWithType(DetailCalloutAccessoryView)!
-        let button = RideRequestButton(dropoffCoordinate: pin.coordinate, address: pin.placeInfo?.name)
+        let button = RideRequestButton(dropoffCoordinate: pin.coordinate, address: pin.placemark?.name)
         detailCalloutAccessoryView.stackView.insertArrangedSubview(button, atIndex: 0)
         return detailCalloutAccessoryView
     }

@@ -1,5 +1,5 @@
 //
-//  RootObject+CoreDataProperties.swift
+//  Placemark+CoreDataProperties.swift
 //  Past
 //
 //  Created by luojie on 16/4/28.
@@ -12,8 +12,9 @@
 import Foundation
 import CoreData
 
-extension RootObject {
+extension Placemark {
 
-    @NSManaged var creationDate: NSDate?
+    @NSManaged var name: String?
+    @NSManaged var pins: NSSet?
 
 }

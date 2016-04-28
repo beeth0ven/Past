@@ -17,11 +17,11 @@ class Period: RootObject {
         case Transition
     }
     
-    static func update(visit visit: CLVisit ,inContext context: NSManagedObject.Context = .Main) {
+    static func updateFromVisit(visit: CLVisit) {
         
         if visit.option == .Visit {
             let predicate = NSPredicate(format: "arrivalDate = %@", visit.arrivalDate)
-            let stays = Period.get(predicate: predicate, context: context)
+            let stays = Period.get(predicate: predicate)
             if let stay = stays.first {
                 stay.stayPin?.coordinate = visit.coordinate.toMap
                 stay.departureDate = visit.departureDate
@@ -30,8 +30,10 @@ class Period: RootObject {
             }
         }
         
-        let period = Period.insert(inContext: context)
-        period.stayPin = Pin.getFromCoordinate(visit.coordinate.toMap, inContext: context)
+        let period = Period.insert()
+        let pin = Pin.insert()
+        pin.coordinate = visit.coordinate.toMap
+        pin.period = period
         period.arrivalDate = visit.arrivalDate
         period.departureDate = visit.departureDate
         print("Stay: \(period.stayPin!.coordinate)")
@@ -42,16 +44,12 @@ class Period: RootObject {
         set { optionRawValue = newValue.rawValue }
     }
     
-
-    override func prepareForDeletion() {
-        super.prepareForDeletion()
+    var stayPin: Pin? {
         switch option {
         case .Stay:
-            if stayPin?.stayPeriods?.count == 1 {
-                stayPin?.delete()
-            }
+            return pins?.firstObject as? Pin
         case .Transition:
-            break
+            return nil
         }
     }
 }
