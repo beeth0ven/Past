@@ -41,8 +41,11 @@ class ViewController: UIViewController {
             cell.detailTextLabel?.text = period.subTitle
         }
         dateSource.didSelectObject = { [unowned self] period in
-            let predicate = NSPredicate(format: "%@ IN stayPeriods", period)
+            let predicate = NSPredicate(format: "period = %@", period)
             self.mapDelegate.setup(predicate: predicate)
+        }
+        dateSource.didTappedAccessoryButtonForObject = { [unowned self] period in
+            self.performSegueWithIdentifier("ShowPin", sender: period.stayPin!)
         }
     }
     
@@ -51,9 +54,11 @@ class ViewController: UIViewController {
         mapDelegate.configureViewForObject = { [unowned self] view, pin in
             view.canShowCallout = true
             view.draggable = true
+            view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
             view.detailCalloutAccessoryView = self.detailCalloutAccessoryViewForPin(pin)
         }
-        mapDelegate.didSelectCalloutAccessoryView = {  _, pin in
+        mapDelegate.didSelectCalloutAccessoryView = { [unowned self] _, pin in
+            self.performSegueWithIdentifier("ShowPin", sender: pin)
         }
     }
     
@@ -84,6 +89,13 @@ class ViewController: UIViewController {
         let date = NSDate(timeIntervalSinceNow: -1.0.days)
         let predicate = NSPredicate(format: "creationDate > %@ AND optionRawValue = %@", date, Period.Option.Stay.rawValue.toNumber)
         mapDelegate.setup(predicate: predicate)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let ptvc = segue.destinationViewController as? PinTableViewController,
+            pin = sender as? Pin {
+            ptvc.pin = pin
+        }
     }
 }
 

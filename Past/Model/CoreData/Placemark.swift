@@ -13,18 +13,20 @@ import MapKit
 
 class Placemark: RootObject {
     
-    static func getFromCoordinate(coordinate: CLLocationCoordinate2D, didGet: (Placemark -> Void)) {
-        
-        let geocoder = CLGeocoder()
-        let location = CLLocation(coordinate: coordinate.toLocation)
-        geocoder.reverseGeocodeLocation(location) { clplacemarks, error in
-            guard let clplacemark = clplacemarks?.first,
-            placemark = getFromCLPlacemark(clplacemark) else {
-                return
+    static func getFromCoordinate(
+        coordinate: CLLocationCoordinate2D,
+        didGet: (Placemark -> Void),
+        didFail: (() -> Void)? = nil) {
+
+        CLGeocoder.getPlacemarksFromCoordinate(coordinate, didGet: { clplacemarks in
+            guard let clplacemark = clplacemarks.first,
+                placemark = getFromCLPlacemark(clplacemark) else {
+                    didFail?()
+                    return
             }
             
             didGet(placemark)
-        }
+        })
     }
     
     static func getFromCLPlacemark(clplacemark: CLPlacemark) -> Placemark? {

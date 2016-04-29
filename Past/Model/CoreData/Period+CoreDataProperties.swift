@@ -19,7 +19,7 @@ extension Period {
     @NSManaged var optionRawValue: NSNumber?
     @NSManaged var timeInterval: NSNumber?
     @NSManaged var next: Period?
-    @NSManaged var previous: Period?
     @NSManaged var pins: NSOrderedSet?
+    @NSManaged var previous: Period?
 
 }

@@ -35,6 +35,7 @@
 		453507BB1CD2293900AB4E7E /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507B91CD2293900AB4E7E /* Region.swift */; };
 		453507BE1CD2296000AB4E7E /* Placemark+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507BC1CD2296000AB4E7E /* Placemark+CoreDataProperties.swift */; };
 		453507BF1CD2296000AB4E7E /* Placemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507BD1CD2296000AB4E7E /* Placemark.swift */; };
+		453507C11CD2694300AB4E7E /* PinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507C01CD2694300AB4E7E /* PinTableViewController.swift */; };
 		455F28EB1CB6AE9B002AE5DA /* LocationHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28EA1CB6AE9B002AE5DA /* LocationHandlerType.swift */; };
 		455F28ED1CB6AEE4002AE5DA /* MapKit+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28EC1CB6AEE4002AE5DA /* MapKit+.swift */; };
 		455F28EF1CB6AF13002AE5DA /* CoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28EE1CB6AF13002AE5DA /* CoreDataSource.swift */; };
@@ -78,6 +79,7 @@
 		453507B91CD2293900AB4E7E /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		453507BC1CD2296000AB4E7E /* Placemark+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Placemark+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		453507BD1CD2296000AB4E7E /* Placemark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Placemark.swift; sourceTree = "<group>"; };
+		453507C01CD2694300AB4E7E /* PinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinTableViewController.swift; sourceTree = "<group>"; };
 		455F28EA1CB6AE9B002AE5DA /* LocationHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHandlerType.swift; sourceTree = "<group>"; };
 		455F28EC1CB6AEE4002AE5DA /* MapKit+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapKit+.swift"; sourceTree = "<group>"; };
 		455F28EE1CB6AF13002AE5DA /* CoreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSource.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				45237A2A1CAB67DC00C636A6 /* Main.storyboard */,
 				45237A2B1CAB67DC00C636A6 /* ViewController.swift */,
+				453507C01CD2694300AB4E7E /* PinTableViewController.swift */,
 				45CC8B5D1CCD013F004BD988 /* DetailCalloutAccessoryView */,
 			);
 			path = Main;
@@ -446,6 +449,7 @@
 				451341911CB502750098C24F /* CoreData+.swift in Sources */,
 				455F28F11CB6AF3C002AE5DA /* CoreDataHandlerType.swift in Sources */,
 				455F28EF1CB6AF13002AE5DA /* CoreDataSource.swift in Sources */,
+				453507C11CD2694300AB4E7E /* PinTableViewController.swift in Sources */,
 				455F28EB1CB6AE9B002AE5DA /* LocationHandlerType.swift in Sources */,
 				451E61461CC9281800C40168 /* Period+CoreDataProperties.swift in Sources */,
 				451FD1091CAEB3FC003DCAA0 /* Context.swift in Sources */,

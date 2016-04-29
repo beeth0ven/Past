@@ -13,8 +13,6 @@ import MapKit
 
 class Region: RootObject {
     
-    
-    
     static func getFromCoordinate(coordinate: CLLocationCoordinate2D) -> Region? {
         let predicate = NSPredicate(aroundCoordinate: coordinate)
         let regions = Region.get(predicate: predicate)

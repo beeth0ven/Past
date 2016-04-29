@@ -12,7 +12,7 @@ import MapKit
 
 class Pin: RootObject {
     
-    static func insertFromLocation(location: CLLocation) -> Pin? {
+    static func insertFromLocation(location: CLLocation) -> Pin {
         
         let pin = Pin.insert()
         pin.coordinate = location.coordinate.toMap

@@ -19,24 +19,43 @@ class Period: RootObject {
     
     static func updateFromVisit(visit: CLVisit) {
         
-        if visit.option == .Visit {
-            let predicate = NSPredicate(format: "arrivalDate = %@", visit.arrivalDate)
-            let stays = Period.get(predicate: predicate)
-            if let stay = stays.first {
-                stay.stayPin?.coordinate = visit.coordinate.toMap
-                stay.departureDate = visit.departureDate
-                stay.timeInterval = stay.departureDate!.timeIntervalSinceDate(stay.arrivalDate!)
-                return
+        switch visit.option {
+        case .Arrival:
+            insertFromVisit(visit)
+            
+        case .Departure:
+            insertFromVisit(visit)
+            
+        case .Visit:
+            if let stay = getFromVisit(visit) {
+                stay.updateFromVisit(visit)
+            } else {
+                insertFromVisit(visit)
             }
+            
         }
-        
+    }
+    
+    private static func insertFromVisit(visit: CLVisit) {
         let period = Period.insert()
+        period.arrivalDate = visit.arrivalDate
+        period.departureDate = visit.departureDate
         let pin = Pin.insert()
         pin.coordinate = visit.coordinate.toMap
         pin.period = period
-        period.arrivalDate = visit.arrivalDate
-        period.departureDate = visit.departureDate
         print("Stay: \(period.stayPin!.coordinate)")
+    }
+    
+    private static func getFromVisit(visit: CLVisit) -> Period? {
+        let predicate = NSPredicate(format: "arrivalDate = %@", visit.arrivalDate)
+        let stays = Period.get(predicate: predicate)
+        return stays.first
+    }
+    
+    private func updateFromVisit(visit: CLVisit) {
+        stayPin?.coordinate = visit.coordinate.toMap
+        departureDate = visit.departureDate
+        timeInterval = departureDate!.timeIntervalSinceDate(arrivalDate!)
     }
     
     var option: Option {
@@ -60,6 +79,10 @@ extension Period {
     }
     
     var subTitle: String {
+        return timeIntervalText
+    }
+    
+    var timeIntervalText: String {
         let date = departureDate != NSDate.distantFuture() ? departureDate! : NSDate()
         let timeInterval = date.timeIntervalSinceDate(arrivalDate!)
         return timeInterval.timeText

@@ -34,7 +34,7 @@
         <element name="Period" positionX="-414" positionY="-117" width="128" height="148"/>
         <element name="Pin" positionX="-207" positionY="-99" width="128" height="133"/>
         <element name="Placemark" positionX="63" positionY="-73" width="128" height="73"/>
-        <element name="RootObject" positionX="-189" positionY="-267" width="128" height="58"/>
         <element name="Region" positionX="52" positionY="63" width="128" height="103"/>
+        <element name="RootObject" positionX="-189" positionY="-267" width="128" height="58"/>
     </elements>
 </model>

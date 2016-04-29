@@ -14,6 +14,7 @@ class CoreDataSource<CL: UITableViewCell ,MO: NSManagedObject>: NSObject, UITabl
     weak var tableView: UITableView! { didSet { tableView.dataSource = self; tableView.delegate = self } }
     var configureCellForObject: ((CL, MO) -> Void)?
     var didSelectObject: (MO -> Void)?
+    var didTappedAccessoryButtonForObject: (MO -> Void)?
 
     func setup(predicate
         predicate: NSPredicate? = nil,
@@ -56,8 +57,6 @@ class CoreDataSource<CL: UITableViewCell ,MO: NSManagedObject>: NSObject, UITabl
         return cell
     }
     
-    
-    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let object = fetchedResultsController!.objectAtIndexPath(indexPath) as! NSManagedObject
@@ -68,6 +67,11 @@ class CoreDataSource<CL: UITableViewCell ,MO: NSManagedObject>: NSObject, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let object = fetchedResultsController!.objectAtIndexPath(indexPath) as! MO
         didSelectObject?(object)
+    }
+    
+    func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        let object = fetchedResultsController!.objectAtIndexPath(indexPath) as! MO
+        didTappedAccessoryButtonForObject?(object)
     }
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {

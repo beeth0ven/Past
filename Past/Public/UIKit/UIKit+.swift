@@ -51,3 +51,42 @@ extension UIViewController {
         return NSBundle.mainBundle().loadNibNamed(nibName, owner: self, options: nil).first as? T
     }
 }
+
+
+extension UITableView {
+    
+    @IBInspectable
+    public var cellSelfSized: Bool {
+        
+        get {
+            
+            return rowHeight == UITableViewAutomaticDimension
+        }
+        set(enable) {
+            if enable {
+                estimatedRowHeight = rowHeight
+                rowHeight = UITableViewAutomaticDimension
+            }
+        }
+    }
+}
+
+extension UICollectionView {
+    
+    @IBInspectable
+    public var cellSelfSized: Bool {
+        
+        get {
+            
+            guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else { return false }
+            return layout.estimatedItemSize != CGSizeZero
+        }
+        set(enable) {
+            if enable {
+                
+                guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
+                layout.estimatedItemSize = layout.itemSize
+            }
+        }
+    }
+}

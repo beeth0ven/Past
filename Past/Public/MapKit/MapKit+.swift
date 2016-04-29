@@ -45,13 +45,13 @@ extension CLLocationManager {
 }
 
 extension CLGeocoder {
-    static func getPlacemarksFrom(
-        annotation annotation: MKAnnotation,
+    static func getPlacemarksFromCoordinate(
+        coordinate: CLLocationCoordinate2D,
         didGet: ([CLPlacemark] -> Void),
         didFail: ((NSError) -> Void)? = nil) {
         
         let geocoder = CLGeocoder()
-        let location = CLLocation(coordinate: annotation.coordinate.toLocation)
+        let location = CLLocation(coordinate: coordinate.toLocation)
         geocoder.reverseGeocodeLocation(location) { placemarks, error in
             guard error == nil else {
                 didFail?(error!)

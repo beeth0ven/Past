@@ -18,11 +18,15 @@ extension NSDate {
         case NSDate.distantFuture():
             return "Future"
         default:
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .NoStyle
-            dateFormatter.timeStyle = .ShortStyle
-            return dateFormatter.stringFromDate(self)
+            return string(dateStyle: .NoStyle, timeStyle: .ShortStyle)
         }
+    }
+    
+    func string(dateStyle dateStyle: NSDateFormatterStyle, timeStyle: NSDateFormatterStyle) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = dateStyle
+        dateFormatter.timeStyle = timeStyle
+        return dateFormatter.stringFromDate(self)
     }
 }
 
