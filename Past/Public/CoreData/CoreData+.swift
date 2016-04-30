@@ -62,7 +62,7 @@ extension NSSortDescriptor {
 }
 
 extension NSPredicate {
-    convenience init(aroundCoordinate coordinate: CLLocationCoordinate2D, delta: CLLocationDegrees = 0.0002) {
+    convenience init(aroundCoordinate coordinate: CLLocationCoordinate2D, delta: CLLocationDegrees = 0.0003) {
         let minLatitude = coordinate.latitude - delta, maxLatitude = coordinate.latitude + delta
         let minLongitude = coordinate.longitude - delta, maxLongitude = coordinate.longitude + delta
         self.init(

@@ -18,7 +18,15 @@
         <relationship name="region" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="pins" inverseEntity="Region" syncable="YES"/>
     </entity>
     <entity name="Placemark" representedClassName=".Placemark" parentEntity="RootObject" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postalCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="province" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subProvince" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subStreet" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="pins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pin" inverseName="placemark" inverseEntity="Pin" syncable="YES"/>
     </entity>
     <entity name="Region" representedClassName=".Region" parentEntity="RootObject" syncable="YES">
@@ -33,7 +41,7 @@
     <elements>
         <element name="Period" positionX="-414" positionY="-117" width="128" height="148"/>
         <element name="Pin" positionX="-207" positionY="-99" width="128" height="133"/>
-        <element name="Placemark" positionX="63" positionY="-73" width="128" height="73"/>
+        <element name="Placemark" positionX="63" positionY="-73" width="128" height="193"/>
         <element name="Region" positionX="52" positionY="63" width="128" height="103"/>
         <element name="RootObject" positionX="-189" positionY="-267" width="128" height="58"/>
     </elements>

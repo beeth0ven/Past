@@ -73,3 +73,9 @@ extension Double {
         return NSNumber(double: self)
     }
 }
+
+extension String {
+    var trimedString: String {
+        return stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    }
+}

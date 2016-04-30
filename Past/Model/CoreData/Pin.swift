@@ -59,7 +59,7 @@ extension Pin: MKAnnotation {
     var title: String? {
         switch option {
         case .Stay:
-            return placemark?.name
+            return region?.name ?? placemark?.name
         case .Transition:
             return creationDate!.detail
         }

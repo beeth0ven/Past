@@ -39,7 +39,19 @@ class Placemark: RootObject {
         }
         
         let placemark = Placemark.insert()
-        placemark.name = name
+        placemark.parse(clplacemark)
         return placemark
+    }
+    
+    private func parse(clplacemark: CLPlacemark) {
+        name = clplacemark.name
+        country = clplacemark.country
+        province = clplacemark.administrativeArea
+        subProvince = clplacemark.subAdministrativeArea
+        city = clplacemark.locality
+        subCity = clplacemark.subLocality
+        street = clplacemark.thoroughfare
+        subStreet = clplacemark.subThoroughfare
+        postalCode = clplacemark.postalCode
     }
 }
