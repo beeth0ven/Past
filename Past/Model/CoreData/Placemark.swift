@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 import MapKit
 
-
 class Placemark: RootObject {
     
     static func getFromCoordinate(
@@ -55,3 +54,4 @@ class Placemark: RootObject {
         postalCode = clplacemark.postalCode
     }
 }
+

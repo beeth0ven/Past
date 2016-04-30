@@ -7,6 +7,7 @@
 //
 
 import MapKit
+import Contacts
 
 // MARK: - MapKit
 
@@ -82,5 +83,12 @@ extension CLLocationCoordinate2D {
 extension CLLocation {
     convenience init(coordinate: CLLocationCoordinate2D) {
         self.init(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    }
+}
+
+extension MKPlacemark {
+    convenience init(coordinate: CLLocationCoordinate2D, addressName: String?) {
+        let addressDictionary = addressName.flatMap { [CNPostalAddressStreetKey: $0] }
+        self.init(coordinate: coordinate, addressDictionary: addressDictionary)
     }
 }

@@ -79,3 +79,28 @@ extension String {
         return stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
 }
+
+
+extension Dictionary {
+    
+    func map<TK, TV>(transform: (Key, Value) -> (TK, TV) ) -> [TK: TV] {
+        var result = [TK: TV]()
+        for (key, value) in self {
+            let (transformedKey, transformedValue) = transform(key, value)
+            result[transformedKey] = transformedValue
+        }
+        return result
+        
+    }
+    
+    func flatMap<TK, TV>(transform: (Key, Value) -> (TK, TV)? ) -> [TK: TV] {
+        var result = [TK: TV]()
+        for (key, value) in self {
+            if let (transformedKey, transformedValue) = transform(key, value) {
+                result[transformedKey] = transformedValue
+            }
+        }
+        return result
+    }
+    
+}

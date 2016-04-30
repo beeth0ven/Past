@@ -129,11 +129,11 @@
                         <sections>
                             <tableViewSection id="v9k-24-PXu">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" textLabel="Ef7-BV-is8" detailTextLabel="AkH-oI-Pt8" style="IBUITableViewCellStyleValue2" id="oRr-3R-21T">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UITableViewCell" textLabel="Ef7-BV-is8" detailTextLabel="AkH-oI-Pt8" style="IBUITableViewCellStyleValue2" id="oRr-3R-21T">
                                         <rect key="frame" x="0.0" y="35" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oRr-3R-21T" id="a50-pr-jOW">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Region" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ef7-BV-is8">
@@ -320,6 +320,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.66902792450000004" green="0.73128575090000003" blue="0.9488992691" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                 </view>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DrE-qh-Xpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z5J-pJ-xoJ">
                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -328,7 +329,6 @@
                         <segue destination="GSp-lR-0Ya" kind="show" identifier="EditeRegionName" id="JPf-Ax-rH2"/>
                     </connections>
                 </button>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DrE-qh-Xpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1922" y="462"/>
         </scene>

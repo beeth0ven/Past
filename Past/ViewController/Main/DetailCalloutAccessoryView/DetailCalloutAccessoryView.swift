@@ -11,5 +11,12 @@ import CoreData
 import UberRides
 
 class DetailCalloutAccessoryView: UIView {
+    
     @IBOutlet weak var stackView: UIStackView!
+    
+    var didSelectAppleMap: (() -> Void)?
+    
+    @IBAction func openWithAppleMap() {
+        didSelectAppleMap?()
+    }
 }

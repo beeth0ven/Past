@@ -66,3 +66,13 @@ extension Pin: MKAnnotation {
     }
     
 }
+
+extension Pin {
+    func openInMaps() {
+        let mkplacmark = MKPlacemark(coordinate: coordinate, addressName: placemark?.name)
+        let mapItem = MKMapItem(placemark: mkplacmark)
+        mapItem.openInMapsWithLaunchOptions([MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit])
+    }
+}
+
+
