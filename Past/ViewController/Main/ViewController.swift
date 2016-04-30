@@ -69,9 +69,6 @@ class ViewController: UIViewController {
         return detailCalloutAccessoryView
     }
     
-    @IBAction func addPin(sender: UIBarButtonItem) {
-    }
-    
     @IBAction func refresh(sender: UIBarButtonItem) {
         reloadData()
     }

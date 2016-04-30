@@ -1,5 +1,5 @@
 //
-//  EditeSingleTextTVC.swift
+//  EditSingleTextTVC.swift
 //  Past
 //
 //  Created by luojie on 16/4/30.
@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class EditeSingleTextTVC: UITableViewController {
+class EditSingleTextTVC: UITableViewController {
     
     var keyDisplayName: String?
     var value: String!

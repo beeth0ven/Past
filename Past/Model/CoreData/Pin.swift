@@ -43,7 +43,7 @@ extension Pin: MKAnnotation {
         }
     }
     
-    private func getPlacemarkIfNeeded() {
+    func getPlacemarkIfNeeded() {
         if placemark == nil {
             Placemark.getFromCoordinate(coordinate, didGet: {
                 [weak self] placemark in

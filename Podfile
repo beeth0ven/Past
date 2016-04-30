@@ -7,5 +7,7 @@ target 'Past' do
     pod 'RxCocoa',    '~> 2.0'
     pod 'RxBlocking', '~> 2.0'
     pod 'UberRides'
+    pod 'SwiftOpenWeatherMapAPI'
+
 end
 

@@ -36,10 +36,12 @@
 		453507BE1CD2296000AB4E7E /* Placemark+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507BC1CD2296000AB4E7E /* Placemark+CoreDataProperties.swift */; };
 		453507BF1CD2296000AB4E7E /* Placemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507BD1CD2296000AB4E7E /* Placemark.swift */; };
 		453507C11CD2694300AB4E7E /* PinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507C01CD2694300AB4E7E /* PinTableViewController.swift */; };
-		453507C61CD4397200AB4E7E /* Edite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453507C51CD4397200AB4E7E /* Edite.storyboard */; };
-		453507C81CD43B3200AB4E7E /* EditeSingleTextTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507C71CD43B3200AB4E7E /* EditeSingleTextTVC.swift */; };
+		453507C61CD4397200AB4E7E /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453507C51CD4397200AB4E7E /* Edit.storyboard */; };
+		453507C81CD43B3200AB4E7E /* EditSingleTextTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507C71CD43B3200AB4E7E /* EditSingleTextTVC.swift */; };
 		453507CA1CD459B700AB4E7E /* PlacemarkTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507C91CD459B700AB4E7E /* PlacemarkTVC.swift */; };
 		453507CC1CD4612D00AB4E7E /* ViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507CB1CD4612D00AB4E7E /* ViewController+.swift */; };
+		453507CF1CD4735E00AB4E7E /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 453507CE1CD4735E00AB4E7E /* Chart.storyboard */; };
+		453507D11CD4750800AB4E7E /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453507D01CD4750800AB4E7E /* ChartViewController.swift */; };
 		455F28EB1CB6AE9B002AE5DA /* LocationHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28EA1CB6AE9B002AE5DA /* LocationHandlerType.swift */; };
 		455F28ED1CB6AEE4002AE5DA /* MapKit+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28EC1CB6AEE4002AE5DA /* MapKit+.swift */; };
 		455F28EF1CB6AF13002AE5DA /* CoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28EE1CB6AF13002AE5DA /* CoreDataSource.swift */; };
@@ -84,10 +86,12 @@
 		453507BC1CD2296000AB4E7E /* Placemark+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Placemark+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		453507BD1CD2296000AB4E7E /* Placemark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Placemark.swift; sourceTree = "<group>"; };
 		453507C01CD2694300AB4E7E /* PinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinTableViewController.swift; sourceTree = "<group>"; };
-		453507C51CD4397200AB4E7E /* Edite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Edite.storyboard; sourceTree = "<group>"; };
-		453507C71CD43B3200AB4E7E /* EditeSingleTextTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditeSingleTextTVC.swift; sourceTree = "<group>"; };
+		453507C51CD4397200AB4E7E /* Edit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
+		453507C71CD43B3200AB4E7E /* EditSingleTextTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSingleTextTVC.swift; sourceTree = "<group>"; };
 		453507C91CD459B700AB4E7E /* PlacemarkTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacemarkTVC.swift; sourceTree = "<group>"; };
 		453507CB1CD4612D00AB4E7E /* ViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+.swift"; sourceTree = "<group>"; };
+		453507CE1CD4735E00AB4E7E /* Chart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Chart.storyboard; path = Past/ViewController/Chart/Chart.storyboard; sourceTree = SOURCE_ROOT; };
+		453507D01CD4750800AB4E7E /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartViewController.swift; path = Past/ViewController/Chart/ChartViewController.swift; sourceTree = SOURCE_ROOT; };
 		455F28EA1CB6AE9B002AE5DA /* LocationHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHandlerType.swift; sourceTree = "<group>"; };
 		455F28EC1CB6AEE4002AE5DA /* MapKit+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapKit+.swift"; sourceTree = "<group>"; };
 		455F28EE1CB6AF13002AE5DA /* CoreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSource.swift; sourceTree = "<group>"; };
@@ -232,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				45237A291CAB67DC00C636A6 /* Main */,
-				453507C41CD4390200AB4E7E /* Edite */,
+				453507C41CD4390200AB4E7E /* Edit */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -245,6 +249,7 @@
 				453507C01CD2694300AB4E7E /* PinTableViewController.swift */,
 				453507C91CD459B700AB4E7E /* PlacemarkTVC.swift */,
 				45CC8B5D1CCD013F004BD988 /* DetailCalloutAccessoryView */,
+				453507CD1CD4733000AB4E7E /* Chart */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -297,13 +302,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		453507C41CD4390200AB4E7E /* Edite */ = {
+		453507C41CD4390200AB4E7E /* Edit */ = {
 			isa = PBXGroup;
 			children = (
-				453507C51CD4397200AB4E7E /* Edite.storyboard */,
-				453507C71CD43B3200AB4E7E /* EditeSingleTextTVC.swift */,
+				453507C51CD4397200AB4E7E /* Edit.storyboard */,
+				453507C71CD43B3200AB4E7E /* EditSingleTextTVC.swift */,
 			);
-			path = Edite;
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		453507CD1CD4733000AB4E7E /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				453507CE1CD4735E00AB4E7E /* Chart.storyboard */,
+				453507D01CD4750800AB4E7E /* ChartViewController.swift */,
+			);
+			name = Chart;
 			sourceTree = "<group>";
 		};
 		45CC8B5D1CCD013F004BD988 /* DetailCalloutAccessoryView */ = {
@@ -388,8 +402,9 @@
 				45237A2C1CAB67DC00C636A6 /* Main.storyboard in Resources */,
 				45CC8B5C1CCD0139004BD988 /* DetailCalloutAccessoryView.xib in Resources */,
 				45237A1B1CAB608600C636A6 /* LaunchScreen.storyboard in Resources */,
-				453507C61CD4397200AB4E7E /* Edite.storyboard in Resources */,
+				453507C61CD4397200AB4E7E /* Edit.storyboard in Resources */,
 				45237A181CAB608600C636A6 /* Assets.xcassets in Resources */,
+				453507CF1CD4735E00AB4E7E /* Chart.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,7 +494,8 @@
 				452FCBB71CBC03F500297C32 /* CoreDataMapDelegate.swift in Sources */,
 				45237A111CAB608600C636A6 /* AppDelegate.swift in Sources */,
 				451E61431CC927C300C40168 /* RootObject.swift in Sources */,
-				453507C81CD43B3200AB4E7E /* EditeSingleTextTVC.swift in Sources */,
+				453507C81CD43B3200AB4E7E /* EditSingleTextTVC.swift in Sources */,
+				453507D11CD4750800AB4E7E /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

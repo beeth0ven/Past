@@ -39,17 +39,29 @@ class PinTableViewController: AutoDeselectTableViewController {
         timeIntervalLabel.text = period?.timeIntervalText
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "EditeRegionName" {
-            let esttvc = segue.destinationViewController as! EditeSingleTextTVC
-            prepareEditeSingleTextTVCForRegionName(esttvc)
-        } else if segue.identifier == "ShowPlacemark" {
-            let ptvc = segue.destinationViewController as! PlacemarkTVC
-            ptvc.plackmark = pin.placemark
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        switch identifier {
+        case "ShowPlacemark":
+            return pin?.placemark != nil
+        default:
+            return true
         }
     }
     
-    private func prepareEditeSingleTextTVCForRegionName(editeSingleTextTVC: EditeSingleTextTVC) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier {
+        case "EditeRegionName"?:
+            let esttvc = segue.destinationViewController as! EditSingleTextTVC
+            prepareEditeSingleTextTVCForRegionName(esttvc)
+        case "ShowPlacemark"?:
+            let ptvc = segue.destinationViewController as! PlacemarkTVC
+            ptvc.plackmark = pin.placemark
+        default:
+            break
+        }
+    }
+    
+    private func prepareEditeSingleTextTVCForRegionName(editeSingleTextTVC: EditSingleTextTVC) {
         editeSingleTextTVC.keyDisplayName = "Region Name"
         editeSingleTextTVC.value = pin.region?.name
         editeSingleTextTVC.placeholder = "Please Enter a Name!"
