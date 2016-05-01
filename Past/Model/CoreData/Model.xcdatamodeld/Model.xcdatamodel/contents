@@ -3,6 +3,7 @@
     <entity name="Period" representedClassName=".Period" parentEntity="RootObject" syncable="YES">
         <attribute name="arrivalDate" optional="YES" attributeType="Date" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="departureDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="isCurrent" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="optionRawValue" attributeType="Integer 16" defaultValueString="0" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="timeInterval" optional="YES" attributeType="Double" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="next" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Period" inverseName="previous" inverseEntity="Period" syncable="YES"/>
@@ -39,7 +40,7 @@
         <attribute name="creationDate" attributeType="Date" defaultDateTimeInterval="481621560" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Period" positionX="-414" positionY="-117" width="128" height="148"/>
+        <element name="Period" positionX="-414" positionY="-117" width="128" height="165"/>
         <element name="Pin" positionX="-207" positionY="-99" width="128" height="133"/>
         <element name="Placemark" positionX="63" positionY="-73" width="128" height="193"/>
         <element name="Region" positionX="52" positionY="63" width="128" height="103"/>

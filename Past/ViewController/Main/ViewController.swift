@@ -39,6 +39,9 @@ class ViewController: UIViewController {
         dateSource.configureCellForObject = { cell, period in
             cell.textLabel?.text = period.title
             cell.detailTextLabel?.text = period.subTitle
+            if period.option == .Transition {
+                cell.accessoryView = nil
+            }
         }
         dateSource.didSelectObject = { [unowned self] period in
             let predicate = NSPredicate(format: "period = %@", period)
@@ -54,8 +57,10 @@ class ViewController: UIViewController {
         mapDelegate.configureViewForObject = { [unowned self] view, pin in
             view.canShowCallout = true
             view.draggable = true
-            view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
-            view.detailCalloutAccessoryView = self.detailCalloutAccessoryViewForPin(pin)
+            if pin.option == .Stay {
+                view.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+                view.detailCalloutAccessoryView = self.detailCalloutAccessoryViewForPin(pin)
+            }
         }
         mapDelegate.didSelectCalloutAccessoryView = { [unowned self] _, pin in
             self.performSegueWithIdentifier("ShowPin", sender: pin)

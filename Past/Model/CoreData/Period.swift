@@ -18,44 +18,66 @@ class Period: RootObject {
     }
     
     static func updateFromVisit(visit: CLVisit) {
-        
-        switch visit.option {
-        case .Arrival:
-            insertFromVisit(visit)
-            
-        case .Departure:
-            insertFromVisit(visit)
-            
-        case .Visit:
-            if let stay = getFromVisit(visit) {
-                stay.updateFromVisit(visit)
-            } else {
-                insertFromVisit(visit)
-            }
-            
+        let previousPeriod = currentPeriod
+        previousPeriod?.markAsCompletedFromVisit(visit)
+        let newPeriod = insertFromVisit(visit)
+        newPeriod.previous = previousPeriod
+        print("previousPeriod:", previousPeriod, "newPeriod", newPeriod)
+    }
+    
+    static func updateFromLocations(locations: [CLLocation]) {
+        guard let transionPeriod = currentPeriod
+            where transionPeriod.option == .Transition else { return }
+        let pins = locations.map(Pin.insertFromLocation)
+        pins.forEach { $0.period = transionPeriod }
+    }
+    
+    private static var currentPeriod: Period? {
+        let predicate = NSPredicate(format: "isCurrent = %@", true.toNumber)
+        return Period.get(predicate: predicate).first
+    }
+    
+    private func markAsCompletedFromVisit(visit: CLVisit) {
+        switch option {
+        case .Stay:
+            stayPin?.coordinate = visit.coordinate.toMap
+            departureDate = visit.departureDate
+        case .Transition:
+            let pin = Pin.insertFromCoordinate(visit.coordinate.toMap, option: .Transition)
+            pin.period = self
+            departureDate = visit.arrivalDate
         }
+        isCurrent = false
+        updateTimeInterval()
     }
-    
-    private static func insertFromVisit(visit: CLVisit) {
+
+    private static func insertFromVisit(visit: CLVisit) -> Period {
         let period = Period.insert()
-        period.arrivalDate = visit.arrivalDate
-        period.departureDate = visit.departureDate
-        let pin = Pin.insert()
-        pin.coordinate = visit.coordinate.toMap
-        pin.period = period
-        print("Stay: \(period.stayPin!.coordinate)")
+        switch visit.periodOption {
+        case .Stay:
+            period.option = .Stay
+            period.arrivalDate = visit.arrivalDate
+            let pin = Pin.insertFromCoordinate(visit.coordinate.toMap, option: .Stay)
+            pin.creationDate = period.arrivalDate
+            pin.period = period
+        case .Transition:
+            period.option = .Transition
+            period.arrivalDate = visit.departureDate
+            let pin = Pin.insertFromCoordinate(visit.coordinate.toMap, option: .Transition)
+            pin.creationDate = period.arrivalDate
+            pin.period = period
+        }
+        return period
     }
     
-    private static func getFromVisit(visit: CLVisit) -> Period? {
-        let predicate = NSPredicate(format: "arrivalDate = %@", visit.arrivalDate)
-        let stays = Period.get(predicate: predicate)
-        return stays.first
-    }
-    
-    private func updateFromVisit(visit: CLVisit) {
-        stayPin?.coordinate = visit.coordinate.toMap
-        departureDate = visit.departureDate
-        timeInterval = departureDate!.timeIntervalSinceDate(arrivalDate!)
+    private func updateTimeInterval() {
+        if let
+            arrivalDate = arrivalDate,
+            departureDate = departureDate where
+            arrivalDate != NSDate.distantPast() &&
+            departureDate != NSDate.distantFuture() {
+            timeInterval = departureDate.timeIntervalSinceDate(arrivalDate)
+        }
     }
     
     var option: Option {

@@ -37,6 +37,15 @@ extension CLVisit {
             return .Visit
         }
     }
+    
+    var periodOption: Period.Option {
+        switch option {
+        case .Arrival:
+            return .Stay
+        default:
+            return .Transition
+        }
+    }
 }
 
 extension CLLocationManager {

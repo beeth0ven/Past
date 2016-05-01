@@ -21,10 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, Core
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Configuration.setRegion(.China)
         Configuration.setSandboxEnabled(true)
-
-        monitoringVisit(didMonitor: { Period.updateFromVisit($0) })
+        
+        setupLocationService()
         return true
     }
+    
+
     
     func applicationDidEnterBackground(application: UIApplication) {
         saveManagedObjectContext()

@@ -27,6 +27,34 @@ extension LocationHandlerType where Self: NSObject {
         return manager
     }
     
+    func setupLocationService() {
+        
+        locationManager
+            .rx_didVisit
+            .subscribeNext { [unowned self] visit in
+                switch visit.option {
+                case .Arrival:
+                    self.locationManager.stopMonitoringSignificantLocationChanges()
+                default:
+                    self.locationManager.startMonitoringSignificantLocationChanges()
+                }
+            }
+            .addDisposableTo(disposeBag)
+        
+        locationManager
+            .rx_didVisit
+            .subscribeNext(Period.updateFromVisit)
+            .addDisposableTo(disposeBag)
+        
+        locationManager
+            .rx_didUpdateLocations
+            .subscribeNext(Period.updateFromLocations)
+            .addDisposableTo(disposeBag)
+        
+        locationManager.requestAlwaysAuthorizationIfNeeded()
+        locationManager.startMonitoringVisits()
+    }
+    
     func monitoringVisit(didMonitor didMonitor: (CLVisit) -> Void) {
         locationManager.rx_didVisit
             .subscribeNext(didMonitor)
@@ -41,6 +69,18 @@ extension LocationHandlerType where Self: NSObject {
             .addDisposableTo(disposeBag)
         locationManager.requestAlwaysAuthorizationIfNeeded()
         locationManager.stopUpdatingLocation()
+    }
+    
+    func monitoringSignificantLocationChange(didMonitor didMonitor: (CLLocation) -> Void) {
+        locationManager.rx_didUpdateLocations
+            .subscribeNext { didMonitor($0.first!) }
+            .addDisposableTo(disposeBag)
+        locationManager.requestAlwaysAuthorizationIfNeeded()
+        locationManager.startMonitoringSignificantLocationChanges()
+    }
+    
+    func stopMonitoringSignificantLocationChanges() {
+        locationManager.stopMonitoringSignificantLocationChanges()
     }
     
     func backgrounUpdateLocationIfAvailable() {

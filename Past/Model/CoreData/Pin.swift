@@ -13,12 +13,17 @@ import MapKit
 class Pin: RootObject {
     
     static func insertFromLocation(location: CLLocation) -> Pin {
-        
-        let pin = Pin.insert()
-        pin.coordinate = location.coordinate.toMap
+        let pin = Pin.insertFromCoordinate(location.coordinate.toMap, option: .Transition)
         pin.creationDate = location.timestamp
-        print("Pin: \(pin.coordinate)")
         return pin
+    }
+    
+    static func insertFromCoordinate(coordinate: CLLocationCoordinate2D, option: Period.Option) -> Pin {
+        let pin = Pin.insert()
+        pin.option = option
+        pin.coordinate = coordinate
+        return pin
+
     }
     
     var option: Period.Option {
@@ -39,12 +44,12 @@ extension Pin: MKAnnotation {
             latitude = newValue.latitude
             longitude = newValue.longitude
             getPlacemarkIfNeeded()
-            updateRegion()
+            updateRegionIfNeeded()
         }
     }
     
     func getPlacemarkIfNeeded() {
-        if placemark == nil {
+        if placemark == nil && option == .Stay {
             Placemark.getFromCoordinate(coordinate, didGet: {
                 [weak self] placemark in
                 self?.placemark = placemark
@@ -52,8 +57,10 @@ extension Pin: MKAnnotation {
         }
     }
     
-    private func updateRegion() {
-        region = Region.getFromCoordinate(coordinate)
+    private func updateRegionIfNeeded() {
+        if option == .Stay {
+            region = Region.getFromCoordinate(coordinate)
+        }
     }
     
     var title: String? {
@@ -64,7 +71,6 @@ extension Pin: MKAnnotation {
             return creationDate!.detail
         }
     }
-    
 }
 
 extension Pin {

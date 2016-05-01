@@ -74,6 +74,12 @@ extension Double {
     }
 }
 
+extension Bool {
+    var toNumber: NSNumber {
+        return NSNumber(bool: self)
+    }
+}
+
 extension String {
     var trimedString: String {
         return stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
@@ -83,7 +89,7 @@ extension String {
 
 extension Dictionary {
     
-    func map<TK, TV>(transform: (Key, Value) -> (TK, TV) ) -> [TK: TV] {
+    func map<TK, TV>(@noescape transform: (Key, Value) -> (TK, TV) ) -> [TK: TV] {
         var result = [TK: TV]()
         for (key, value) in self {
             let (transformedKey, transformedValue) = transform(key, value)
@@ -93,7 +99,7 @@ extension Dictionary {
         
     }
     
-    func flatMap<TK, TV>(transform: (Key, Value) -> (TK, TV)? ) -> [TK: TV] {
+    func flatMap<TK, TV>(@noescape transform: (Key, Value) -> (TK, TV)? ) -> [TK: TV] {
         var result = [TK: TV]()
         for (key, value) in self {
             if let (transformedKey, transformedValue) = transform(key, value) {

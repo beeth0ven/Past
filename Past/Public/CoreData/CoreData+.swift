@@ -35,12 +35,10 @@ extension ManagedObjectType where Self: NSManagedObject {
     
     static func get(predicate
         predicate: NSPredicate? = nil,
-        sortOption: NSSortDescriptor.Option? = .By(key: "creationDate", ascending: false),
         context: NSManagedObject.Context = .Main
         ) -> [Self] {
         let request = NSFetchRequest(self)
         request.predicate = predicate
-        request.sortDescriptors = sortOption.flatMap { [$0.sortDescriptor] }
         
         return try! context.value.executeFetchRequest(request) as! [Self]
     }
