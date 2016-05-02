@@ -12,7 +12,7 @@
 import Foundation
 import CoreData
 
-extension RootObject {
+extension ManagedObject {
 
     @NSManaged var creationDate: NSDate!
 

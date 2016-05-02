@@ -17,15 +17,21 @@ extension Period {
     @NSManaged var arrivalDate: NSDate!
     @NSManaged var departureDate: NSDate!
     @NSManaged var optionRawValue: NSNumber!
+    @NSManaged var weatherRawValue: String?
     @NSManaged var timeInterval: NSNumber?
     @NSManaged var isCurrent: NSNumber!
     @NSManaged var next: Period?
     @NSManaged var pins: Set<Pin>
     @NSManaged var previous: Period?
-
+    
     var option: Option {
         get { return Option(rawValue: optionRawValue!.integerValue)! }
         set { optionRawValue = newValue.rawValue }
+    }
+    
+    var weather: Weather? {
+        get { return weatherRawValue.flatMap { Weather(rawValue: $0) } }
+        set { weatherRawValue = newValue?.rawValue }
     }
     
     var stayPin: Pin? {

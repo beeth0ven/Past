@@ -40,6 +40,15 @@ class CoreDataSource<CL: UITableViewCell ,MO: NSManagedObject>: NSObject, UITabl
         tableView.reloadData()
     }
     
+    func updateVisibleCells() {
+        let cells = tableView.visibleCells as! [CL]
+        cells.forEach { cell in
+            let indexPath = tableView.indexPathForCell(cell)!
+            let object = fetchedResultsController!.objectAtIndexPath(indexPath) as! MO
+            configureCellForObject?(cell, object)
+        }
+    }
+    
     private var fetchedResultsController: NSFetchedResultsController? { didSet { fetchedResultsController?.delegate = self } }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

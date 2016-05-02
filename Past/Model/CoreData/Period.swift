@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import MapKit
 
-class Period: RootObject {
+class Period: ManagedObject, WeatherHandlerType {
 
     static func updateFromVisit(visit: CLVisit) {
         let previousPeriod = currentPeriod
@@ -34,24 +34,41 @@ class Period: RootObject {
     }
     
     private static func insertFromVisit(visit: CLVisit) -> Period {
-        let period = Period.insert()
         switch visit.option {
         case .Arrival:
-            period.option = .Stay
-            period.arrivalDate = visit.arrivalDate
-            let pin = Pin.insertFromCoordinate(visit.coordinate.toMap, option: .Stay)
-            pin.creationDate = period.arrivalDate
-            pin.period = period
+            return insertStayPeriodFromVisit(visit)
         case .Departure:
-            period.option = .Transition
-            period.arrivalDate = visit.departureDate
-            let pin = Pin.insertFromCoordinate(visit.coordinate.toMap, option: .Transition)
-            pin.creationDate = period.arrivalDate
-            pin.period = period
+            return insertTransitionPeriodFromVisit(visit)
         }
+    }
+    
+    private static func insertStayPeriodFromVisit(visit: CLVisit) -> Period {
+        let period = Period.insert()
+        period.option = .Stay
+        period.arrivalDate = visit.arrivalDate
+        let pin = Pin.insertFromCoordinate(visit.coordinate.toMap, option: .Stay)
+        pin.creationDate = period.arrivalDate
+        pin.period = period
+        period.updateWeather()
         return period
     }
-
+    
+    private static func insertTransitionPeriodFromVisit(visit: CLVisit) -> Period {
+        let period = Period.insert()
+        period.option = .Transition
+        period.arrivalDate = visit.departureDate
+        let pin = Pin.insertFromCoordinate(visit.coordinate.toMap, option: .Transition)
+        pin.creationDate = period.arrivalDate
+        pin.period = period
+        period.updateWeather()
+        return period
+    }
+    
+    private func updateWeather() {
+        guard let coordinate = pins.first?.coordinate else { return }
+        getCurrentWeatherForCoordinate(coordinate) { self.weather = $0 }
+    }
+    
     private static var currentPeriod: Period? {
         let predicate = NSPredicate(format: "isCurrent = YES")
         return Period
@@ -104,7 +121,7 @@ class Period: RootObject {
 
 extension Period {
     var title: String {
-         return option.description + " " + arrivalDate!.detail + " ~~ " + departureDate!.detail
+         return "\(option) \(weather?.description ?? "  ") \(arrivalDate!.detail) ~~ \(departureDate!.detail)"
     }
     
     var subTitle: String {

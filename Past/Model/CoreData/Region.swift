@@ -10,8 +10,7 @@ import Foundation
 import CoreData
 import MapKit
 
-
-class Region: RootObject {
+class Region: ManagedObject {
     
     static func insertForName(name: String, coordinate: CLLocationCoordinate2D) -> Region {
         let region = Region.insert()

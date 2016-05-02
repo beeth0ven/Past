@@ -69,6 +69,12 @@ extension CLLocationCoordinate2D {
             longitude: longitude  - 0.00543
         )
     }
+    
+    func distanceFromCoordinate(coordinate: CLLocationCoordinate2D) -> CLLocationDistance {
+        let location1 = CLLocation(coordinate: self)
+        let location2 = CLLocation(coordinate: coordinate)
+        return location1.distanceFromLocation(location2)
+    }
 }
 
 extension CLLocation {

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import MapKit
 
-class Pin: RootObject {
+class Pin: ManagedObject {
     
     static func insertFromLocation(location: CLLocation) -> Pin {
         let pin = Pin.insertFromCoordinate(location.coordinate.toMap, option: .Transition)
@@ -44,18 +44,13 @@ extension Pin: MKAnnotation {
     }
     
     func getPlacemarkIfNeeded() {
-        if placemark == nil && option == .Stay {
-            Placemark.getFromCoordinate(coordinate, didGet: {
-                [weak self] placemark in
-                self?.placemark = placemark
-                })
-        }
+        guard option == .Stay else { return }
+        Placemark.getFromCoordinate(coordinate, didGet: { [weak self] in self?.placemark = $0 })
     }
     
     private func updateRegionIfNeeded() {
-        if option == .Stay {
-            region = Region.getFromCoordinate(coordinate)
-        }
+        guard option == .Stay else { return }
+        region = Region.getFromCoordinate(coordinate)
     }
     
     var title: String? {

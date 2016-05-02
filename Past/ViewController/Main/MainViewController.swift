@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  Past
 //
 //  Created by luojie on 16/3/30.
@@ -12,7 +12,7 @@ import MapKit
 import CoreData
 import UberRides
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     private func setupOberver() {
         observeForName(UIApplicationDidBecomeActiveNotification) { [unowned self] _ in
-            self.reloadTableView()
+            self.dateSource.updateVisibleCells()
         }
     }
     

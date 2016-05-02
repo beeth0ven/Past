@@ -50,6 +50,10 @@ extension LocationHandlerType where Self: NSObject {
         locationManager.requestAlwaysAuthorizationIfNeeded()
         locationManager.startMonitoringVisits()
     }
+    
+    var WuHanCoordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: 30.58, longitude: 114.27)
+    }
 }
 
 private struct AssociatedKeys {

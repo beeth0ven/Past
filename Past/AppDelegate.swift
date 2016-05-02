@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, Core
         return true
     }
     
-
-    
     func applicationDidEnterBackground(application: UIApplication) {
         saveManagedObjectContext()
         performCoreDataBackgroundTask()

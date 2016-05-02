@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
-    <entity name="Period" representedClassName=".Period" parentEntity="RootObject" syncable="YES">
+    <entity name="ManagedObject" representedClassName=".ManagedObject" syncable="YES">
+        <attribute name="creationDate" attributeType="Date" defaultDateTimeInterval="481621560" syncable="YES"/>
+    </entity>
+    <entity name="Period" representedClassName=".Period" parentEntity="ManagedObject" syncable="YES">
         <attribute name="arrivalDate" optional="YES" attributeType="Date" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="departureDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isCurrent" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="optionRawValue" attributeType="Integer 16" defaultValueString="0" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="timeInterval" optional="YES" attributeType="Double" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="weatherRawValue" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="next" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Period" inverseName="previous" inverseEntity="Period" syncable="YES"/>
         <relationship name="pins" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Pin" inverseName="period" inverseEntity="Pin" syncable="YES"/>
         <relationship name="previous" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Period" inverseName="next" inverseEntity="Period" syncable="YES"/>
     </entity>
-    <entity name="Pin" representedClassName=".Pin" parentEntity="RootObject" syncable="YES">
+    <entity name="Pin" representedClassName=".Pin" parentEntity="ManagedObject" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="optionRawValue" attributeType="Integer 16" defaultValueString="0.0" spotlightIndexingEnabled="YES" syncable="YES"/>
@@ -18,7 +22,7 @@
         <relationship name="placemark" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Placemark" inverseName="pins" inverseEntity="Placemark" syncable="YES"/>
         <relationship name="region" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="pins" inverseEntity="Region" syncable="YES"/>
     </entity>
-    <entity name="Placemark" representedClassName=".Placemark" parentEntity="RootObject" syncable="YES">
+    <entity name="Placemark" representedClassName=".Placemark" parentEntity="ManagedObject" syncable="YES">
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,20 +34,17 @@
         <attribute name="subStreet" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="pins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pin" inverseName="placemark" inverseEntity="Pin" syncable="YES"/>
     </entity>
-    <entity name="Region" representedClassName=".Region" parentEntity="RootObject" syncable="YES">
+    <entity name="Region" representedClassName=".Region" parentEntity="ManagedObject" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="pins" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pin" inverseName="region" inverseEntity="Pin" syncable="YES"/>
     </entity>
-    <entity name="RootObject" representedClassName=".RootObject" syncable="YES">
-        <attribute name="creationDate" attributeType="Date" defaultDateTimeInterval="481621560" syncable="YES"/>
-    </entity>
     <elements>
-        <element name="Period" positionX="-371" positionY="-117" width="128" height="163"/>
+        <element name="Period" positionX="-371" positionY="-117" width="128" height="178"/>
         <element name="Pin" positionX="-182" positionY="-99" width="128" height="133"/>
         <element name="Placemark" positionX="18" positionY="-207" width="128" height="193"/>
         <element name="Region" positionX="18" positionY="5" width="128" height="103"/>
-        <element name="RootObject" positionX="-189" positionY="-267" width="128" height="58"/>
+        <element name="ManagedObject" positionX="-189" positionY="-267" width="128" height="58"/>
     </elements>
 </model>

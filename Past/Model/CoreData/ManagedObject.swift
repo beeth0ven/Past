@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class RootObject: NSManagedObject {
+class ManagedObject: NSManagedObject {
 
     override func awakeFromInsert() {
         super.awakeFromInsert()

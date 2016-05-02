@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import MapKit
 
-class Placemark: RootObject {
+class Placemark: ManagedObject {
     
     static func getFromCoordinate(
         coordinate: CLLocationCoordinate2D,

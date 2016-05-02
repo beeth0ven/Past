@@ -15,8 +15,7 @@ let ManagedObjectContextDidChangeNotification = "ManagedObjectContextDidChangeNo
 extension NSObject {
 
     func postNotificationForName(name: String) {
-        NSNotificationCenter.defaultCenter()
-            .postNotificationName(name, object: self)
+        NSNotification(name: name, object: self).post()
     }
     
     func observeForName(name: String, didReceiveNotification: (NSNotification) -> Void) {
