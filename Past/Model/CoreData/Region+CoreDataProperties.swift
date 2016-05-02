@@ -11,12 +11,14 @@
 
 import Foundation
 import CoreData
+import MapKit
 
 extension Region {
 
     @NSManaged var latitude: NSNumber?
     @NSManaged var longitude: NSNumber?
-    @NSManaged var name: String?
-    @NSManaged var pins: NSSet?
+    @NSManaged var name: String!
+    @NSManaged var pins: Set<Pin>
+    
 
 }

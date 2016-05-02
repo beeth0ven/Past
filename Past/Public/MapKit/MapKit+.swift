@@ -23,28 +23,10 @@ extension CLVisit {
     enum Option: Int {
         case Arrival
         case Departure
-        case Visit
     }
     
     var option: Option {
-        let past = NSDate.distantPast(), future = NSDate.distantFuture()
-        switch (arrivalDate, departureDate) {
-        case (_, future):
-            return .Arrival
-        case (past, _):
-            return .Departure
-        default:
-            return .Visit
-        }
-    }
-    
-    var periodOption: Period.Option {
-        switch option {
-        case .Arrival:
-            return .Stay
-        default:
-            return .Transition
-        }
+        return departureDate == NSDate.distantFuture() ? .Arrival : .Departure
     }
 }
 

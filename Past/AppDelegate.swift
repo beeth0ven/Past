@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, Core
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Configuration.setRegion(.China)
         Configuration.setSandboxEnabled(true)
-        
         setupLocationService()
         return true
     }

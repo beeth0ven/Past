@@ -14,6 +14,6 @@ import CoreData
 
 extension RootObject {
 
-    @NSManaged var creationDate: NSDate?
+    @NSManaged var creationDate: NSDate!
 
 }

@@ -29,10 +29,7 @@ class Region: RootObject {
         let regions = Region.get(predicate: predicate)
         return regions.sort(>).first
     }
-
-}
-
-extension Region {
+    
     var coordinate: CLLocationCoordinate2D {
         get {
             return CLLocationCoordinate2D(
@@ -45,9 +42,8 @@ extension Region {
             longitude = newValue.longitude
         }
     }
-    
 }
 
 func >(left: Region, right: Region) -> Bool {
-    return left.pins?.count > right.pins?.count
+    return left.pins.count > right.pins.count
 }

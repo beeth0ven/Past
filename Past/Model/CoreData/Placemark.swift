@@ -25,7 +25,7 @@ class Placemark: RootObject {
             }
             
             didGet(placemark)
-        })
+            }, didFail: { _ in didFail?() })
     }
     
     static func getFromCLPlacemark(clplacemark: CLPlacemark) -> Placemark? {

@@ -23,13 +23,8 @@ class Pin: RootObject {
         pin.option = option
         pin.coordinate = coordinate
         return pin
+    }
 
-    }
-    
-    var option: Period.Option {
-        get { return Period.Option(rawValue: optionRawValue!.integerValue)! }
-        set { optionRawValue = newValue.rawValue }
-    }
 }
 
 extension Pin: MKAnnotation {

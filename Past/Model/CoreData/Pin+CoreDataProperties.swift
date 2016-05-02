@@ -20,5 +20,9 @@ extension Pin {
     @NSManaged var period: Period?
     @NSManaged var placemark: Placemark?
     @NSManaged var region: Region?
-
+    
+    var option: Period.Option {
+        get { return Period.Option(rawValue: optionRawValue!.integerValue)! }
+        set { optionRawValue = newValue.rawValue }
+    }
 }

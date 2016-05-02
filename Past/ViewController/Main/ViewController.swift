@@ -39,9 +39,7 @@ class ViewController: UIViewController {
         dateSource.configureCellForObject = { cell, period in
             cell.textLabel?.text = period.title
             cell.detailTextLabel?.text = period.subTitle
-            if period.option == .Transition {
-                cell.accessoryView = nil
-            }
+            cell.accessoryType = period.option == .Stay ? .DetailButton : .None
         }
         dateSource.didSelectObject = { [unowned self] period in
             let predicate = NSPredicate(format: "period = %@", period)

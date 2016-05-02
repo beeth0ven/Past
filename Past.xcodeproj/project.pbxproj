@@ -46,6 +46,7 @@
 		455F28ED1CB6AEE4002AE5DA /* MapKit+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28EC1CB6AEE4002AE5DA /* MapKit+.swift */; };
 		455F28EF1CB6AF13002AE5DA /* CoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28EE1CB6AF13002AE5DA /* CoreDataSource.swift */; };
 		455F28F11CB6AF3C002AE5DA /* CoreDataHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455F28F01CB6AF3C002AE5DA /* CoreDataHandlerType.swift */; };
+		456BB52E1CD6742F00AA9C8A /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456BB52D1CD6742F00AA9C8A /* Date+.swift */; };
 		45CC8B5C1CCD0139004BD988 /* DetailCalloutAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CC8B5B1CCD0139004BD988 /* DetailCalloutAccessoryView.xib */; };
 		45CC8B5F1CCD0181004BD988 /* DetailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CC8B5E1CCD0181004BD988 /* DetailCalloutAccessoryView.swift */; };
 		DB8D57A5CF3C648F83B31326 /* Pods_Past.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E73FCCCFF985E56E3CC4F904 /* Pods_Past.framework */; };
@@ -96,6 +97,7 @@
 		455F28EC1CB6AEE4002AE5DA /* MapKit+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapKit+.swift"; sourceTree = "<group>"; };
 		455F28EE1CB6AF13002AE5DA /* CoreDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSource.swift; sourceTree = "<group>"; };
 		455F28F01CB6AF3C002AE5DA /* CoreDataHandlerType.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; fileEncoding = 4; path = CoreDataHandlerType.swift; sourceTree = "<group>"; };
+		456BB52D1CD6742F00AA9C8A /* Date+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		45CC8B5B1CCD0139004BD988 /* DetailCalloutAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailCalloutAccessoryView.xib; sourceTree = "<group>"; };
 		45CC8B5E1CCD0181004BD988 /* DetailCalloutAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCalloutAccessoryView.swift; sourceTree = "<group>"; };
 		E73FCCCFF985E56E3CC4F904 /* Pods_Past.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Past.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,15 +140,11 @@
 		451341801CB4E3820098C24F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				453507BC1CD2296000AB4E7E /* Placemark+CoreDataProperties.swift */,
+				456BB52C1CD6716300AA9C8A /* Properties */,
 				453507BD1CD2296000AB4E7E /* Placemark.swift */,
-				453507B81CD2293900AB4E7E /* Region+CoreDataProperties.swift */,
 				453507B91CD2293900AB4E7E /* Region.swift */,
-				451E61441CC9281800C40168 /* Period+CoreDataProperties.swift */,
 				451E61451CC9281800C40168 /* Period.swift */,
-				451E61401CC927C300C40168 /* RootObject+CoreDataProperties.swift */,
 				451E61411CC927C300C40168 /* RootObject.swift */,
-				4513418C1CB4F6D90098C24F /* Pin+CoreDataProperties.swift */,
 				4513418D1CB4F6D90098C24F /* Pin.swift */,
 				451D0EE51CC31E5700B01E2B /* Model.xcdatamodeld */,
 			);
@@ -179,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				451341841CB4E9F60098C24F /* Foundation+.swift */,
+				456BB52D1CD6742F00AA9C8A /* Date+.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -318,6 +317,18 @@
 				453507D01CD4750800AB4E7E /* ChartViewController.swift */,
 			);
 			name = Chart;
+			sourceTree = "<group>";
+		};
+		456BB52C1CD6716300AA9C8A /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				453507B81CD2293900AB4E7E /* Region+CoreDataProperties.swift */,
+				451E61441CC9281800C40168 /* Period+CoreDataProperties.swift */,
+				451E61401CC927C300C40168 /* RootObject+CoreDataProperties.swift */,
+				4513418C1CB4F6D90098C24F /* Pin+CoreDataProperties.swift */,
+				453507BC1CD2296000AB4E7E /* Placemark+CoreDataProperties.swift */,
+			);
+			name = Properties;
 			sourceTree = "<group>";
 		};
 		45CC8B5D1CCD013F004BD988 /* DetailCalloutAccessoryView */ = {
@@ -492,6 +503,7 @@
 				453507CC1CD4612D00AB4E7E /* ViewController+.swift in Sources */,
 				451FD1091CAEB3FC003DCAA0 /* Context.swift in Sources */,
 				452FCBB71CBC03F500297C32 /* CoreDataMapDelegate.swift in Sources */,
+				456BB52E1CD6742F00AA9C8A /* Date+.swift in Sources */,
 				45237A111CAB608600C636A6 /* AppDelegate.swift in Sources */,
 				451E61431CC927C300C40168 /* RootObject.swift in Sources */,
 				453507C81CD43B3200AB4E7E /* EditSingleTextTVC.swift in Sources */,

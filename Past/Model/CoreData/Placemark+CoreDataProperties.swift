@@ -23,6 +23,6 @@ extension Placemark {
     @NSManaged var subStreet: String?
     @NSManaged var subProvince: String?
     @NSManaged var postalCode: String?
-    @NSManaged var pins: NSSet?
+    @NSManaged var pins: Set<Pin>
 
 }
