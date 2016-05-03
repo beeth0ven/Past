@@ -66,7 +66,7 @@ class MainViewController: UIViewController {
     }
     
     private func detailCalloutAccessoryViewForPin(pin: Pin) -> DetailCalloutAccessoryView {
-        let detailCalloutAccessoryView = viewFromNibWithType(DetailCalloutAccessoryView)!
+        let detailCalloutAccessoryView = DetailCalloutAccessoryView.viewFromNib()!
         detailCalloutAccessoryView.didSelectAppleMap = { pin.openInMaps() }
         let unberButton = RideRequestButton(dropoffCoordinate: pin.coordinate, address: pin.placemark?.name)
         detailCalloutAccessoryView.stackView.addArrangedSubview(unberButton)

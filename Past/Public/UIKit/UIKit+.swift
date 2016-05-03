@@ -45,13 +45,14 @@ extension UITableView {
     }
 }
 
-extension UIViewController {
-    func viewFromNibWithType<T: UIView>(_: T.Type) -> T? {
-        let nibName = String(T)
-        return NSBundle.mainBundle().loadNibNamed(nibName, owner: self, options: nil).first as? T
+protocol ViewType {}
+extension UIView: ViewType {}
+extension ViewType where Self: UIView {
+    static func viewFromNib() -> Self? {
+        let nibName = String(self)
+        return NSBundle.mainBundle().loadNibNamed(nibName, owner: self, options: nil).first as? Self
     }
 }
-
 
 extension UITableView {
     
