@@ -24,7 +24,7 @@ extension WeatherHandlerType where Self: NSObject {
     }
     
     func getCurrentWeatherForCoordinate(coordinate: CLLocationCoordinate2D, didGet: (Weather?) -> Void) {
-        weatherManager.currentWeatherByCityNameAsJson("Koror") { result in
+        weatherManager.currentWeatherByCoordinatesAsJson(coordinate) { result in
             switch result {
             case .Success(let json):
                 let weather = Weather(rawValue: json["weather"][0]["main"].stringValue)

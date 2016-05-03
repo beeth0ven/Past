@@ -14,7 +14,7 @@ import CoreData
 import UberRides
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, CoreDataHandlerType {
+class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, CoreDataHandlerType, WeatherHandlerType {
     
     var window: UIWindow?
 
