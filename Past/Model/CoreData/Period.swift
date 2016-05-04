@@ -121,7 +121,7 @@ class Period: ManagedObject, WeatherHandlerType {
 
 extension Period {
     var title: String {
-         return "\(option) \(weather?.description ?? "  ") \(arrivalDate!.detail) ~~ \(departureDate!.detail)"
+        return "\(option)  \(weather?.description ?? "  ")  \(arrivalDate!.detail) ~~ \(departureDate!.detail)"
     }
     
     var subTitle: String {
