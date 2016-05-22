@@ -55,3 +55,38 @@ class Placemark: ManagedObject {
     }
 }
 
+extension Placemark: MKAnnotation {
+    
+    var coordinate: CLLocationCoordinate2D {
+        return firstPin.coordinate
+    }
+    
+    var title: String? {
+        return name
+    }
+    
+    var subtitle: String? {
+        return "\(pins.count) times"
+    }
+    
+    var firstPin: Pin! {
+        let pins = Array(self.pins)
+        return pins.sort { $0.creationDate < $1.creationDate }.first!
+    }
+    
+    func openInMaps() {
+        firstPin.openInMaps()
+    }
+}
+
+extension NSPredicate {
+    convenience init(placemarkFromRegion region: MKCoordinateRegion) {
+        self.init(
+            format: "Any %@ < pins.latitude AND Any pins.latitude < %@ AND Any %@ < pins.longitude AND Any pins.longitude < %@",
+            region.minLatitude.toNumber,
+            region.maxLatitude.toNumber,
+            region.minLongitude.toNumber,
+            region.maxLongitude.toNumber
+        )
+    }
+}

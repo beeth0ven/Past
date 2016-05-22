@@ -12,8 +12,10 @@ import MapKit
 
 class CoreDataMapDelegate<AV: MKAnnotationView ,MO: NSManagedObject>: NSObject, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
     weak var mapView: MKMapView! { didSet { mapView.delegate = self } }
+    var showPolyline = true
     var configureViewForObject: ((AV, MO) -> Void)?
     var didSelectCalloutAccessoryView: ((UIView, MO) -> Void)?
+    var didChangeRegion: ((MKCoordinateRegion) -> Void)?
     
     func setup(predicate
         predicate: NSPredicate? = nil,
@@ -55,6 +57,10 @@ class CoreDataMapDelegate<AV: MKAnnotationView ,MO: NSManagedObject>: NSObject, 
         didSelectCalloutAccessoryView?(control, view.annotation as! MO)
     }
     
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        didChangeRegion?(mapView.region)
+    }
+    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         reloadMapView()
     }
@@ -69,8 +75,10 @@ class CoreDataMapDelegate<AV: MKAnnotationView ,MO: NSManagedObject>: NSObject, 
             self.mapView.showAnnotations(self.mapView.annotations, animated: true)
         }
         
-        var coordinates = annotations.map { $0.coordinate }
-        let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
-        mapView.addOverlay(polyline)
+        if showPolyline {
+            var coordinates = annotations.map { $0.coordinate }
+            let polyline = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+            mapView.addOverlay(polyline)
+        }
     }
 }

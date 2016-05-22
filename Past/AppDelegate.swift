@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, Core
         Configuration.setRegion(.China)
         Configuration.setSandboxEnabled(true)
         setupLocationService()
+        
         return true
     }
     
@@ -35,3 +36,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, Core
     }
     
 }
+
+

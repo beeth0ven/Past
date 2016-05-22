@@ -89,3 +89,22 @@ extension MKPlacemark {
         self.init(coordinate: coordinate, addressDictionary: addressDictionary)
     }
 }
+
+extension MKCoordinateRegion {
+    var minLatitude: CLLocationDegrees {
+        return center.latitude - span.latitudeDelta/2
+    }
+    
+    var maxLatitude: CLLocationDegrees {
+        return center.latitude + span.latitudeDelta/2
+    }
+    
+    var minLongitude: CLLocationDegrees {
+        return center.longitude - span.longitudeDelta/2
+    }
+    
+    var maxLongitude: CLLocationDegrees {
+        return center.longitude + span.longitudeDelta/2
+    }
+}
+

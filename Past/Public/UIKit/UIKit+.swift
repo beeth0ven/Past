@@ -91,3 +91,45 @@ extension UICollectionView {
         }
     }
 }
+
+extension UIScrollView {
+    
+    @IBInspectable
+    public var autoShrink: Bool {
+        // get method not used
+        get {
+            return false
+        }
+        
+        set(auto) {
+            if auto {
+                observeForName(UIKeyboardDidShowNotification, didReceiveNotification: { [unowned self] noti in
+                    let info = noti.userInfo!
+                    let kbSize = info[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+                    
+                    var contentInsets = self.contentInset
+                    contentInsets.bottom = kbSize.height
+                    
+                    self.contentInset = contentInsets
+                    self.scrollIndicatorInsets = contentInsets
+                    })
+                
+                observeForName(UIKeyboardWillHideNotification, didReceiveNotification: { [unowned self] noti in
+                    var contentInsets = self.contentInset
+                    contentInsets.bottom = 0
+                    UIView.animateWithDuration(0.4, animations: { self.contentInset = contentInsets })
+                    self.scrollIndicatorInsets = contentInsets
+                    })
+                
+            }
+        }
+    }
+}
+
+extension UIView {
+    func animatedRelayout() {
+        UIView.animateWithDuration(0.3) { 
+            self.layoutIfNeeded()
+        }
+    }
+}

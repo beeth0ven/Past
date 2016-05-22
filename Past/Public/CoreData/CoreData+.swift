@@ -72,3 +72,13 @@ extension NSPredicate {
         )
     }
 }
+
+func &&(left: NSPredicate, right: NSPredicate) -> NSPredicate {
+    return NSCompoundPredicate(andPredicateWithSubpredicates: [left, right])
+}
+
+infix operator &= { associativity right }
+
+func &=(inout left: NSPredicate, right: NSPredicate) {
+    left = NSCompoundPredicate(andPredicateWithSubpredicates: [left, right])
+}
