@@ -25,7 +25,13 @@ extension CoreDataHandlerType {
     func performCoreDataBackgroundTask() {
         print(#function)
         let predicate = NSPredicate(format: "optionRawValue = %@ AND placemark = nil", Period.Option.Stay.rawValue.toNumber)
-        let pins = Pin.get(predicate: predicate)
-        pins.forEach { $0.getPlacemarkIfNeeded() }
+        Pin.get(predicate: predicate)
+            .forEach { $0.getPlacemarkIfNeeded() }
+        
+        Placemark
+            .get(predicate: NSPredicate(format: "pins.@count = 0"))
+            .forEach { $0.delete() }
     }
+    
+    
 }

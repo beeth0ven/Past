@@ -17,12 +17,11 @@ import UberRides
 class AppDelegate: UIResponder, UIApplicationDelegate, LocationHandlerType, CoreDataHandlerType, WeatherHandlerType {
     
     var window: UIWindow?
-
+        
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Configuration.setRegion(.China)
         Configuration.setSandboxEnabled(true)
-        setupLocationService()
-        
+        setupLocationService()        
         return true
     }
     

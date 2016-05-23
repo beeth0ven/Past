@@ -133,3 +133,28 @@ extension UIView {
         }
     }
 }
+
+extension UINavigationBar {
+    @IBInspectable
+    var hideSeparator: Bool {
+        get { return shadowImage != nil }
+        set {
+            let image: UIImage? = newValue ? UIImage.onePixelImageFromColor(UIColor.clearColor()) : nil
+            shadowImage = image
+            setBackgroundImage(image, forBarMetrics: .Default)
+        }
+    }
+    
+}
+
+extension UIImage {
+    class func onePixelImageFromColor(color: UIColor) -> UIImage {
+        UIGraphicsBeginImageContext(CGSizeMake(1, 1))
+        let context = UIGraphicsGetCurrentContext()
+        CGContextSetFillColorWithColor(context, color.CGColor)
+        CGContextFillEllipseInRect(context, CGRectMake(0, 0, 1, 1))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+}

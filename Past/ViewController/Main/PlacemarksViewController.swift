@@ -36,6 +36,15 @@ class PlacemarksViewController: UIViewController {
         }
     }
     
+    private var predicate: NSPredicate {
+        let predicate = NSPredicate(format: "pins.@count > 0")
+        if let searchString = searchBar.text where !searchString.isEmpty {
+            return  NSPredicate(format: "name contains[cd] %@", searchString) && predicate
+        } else {
+            return predicate
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupOberver()
@@ -67,27 +76,14 @@ class PlacemarksViewController: UIViewController {
             view.detailCalloutAccessoryView = self.detailCalloutAccessoryViewForPlacemarkplacemark(placemark)
         }
         mapDelegate.showPolyline = false
-        
-        mapDelegate.didChangeRegion = { [unowned self] in
-            var predicate = NSPredicate(placemarkFromRegion: $0)
-            if let searchString = self.searchBar.text where !searchString.isEmpty {
-                let searchStringPredicate = NSPredicate(format: "name contains[cd] %@", searchString)
-                predicate &= searchStringPredicate
-            }
-            self.dateSource.setup(predicate: predicate, sortOption: .By(key: "name", ascending: true))
-        }
     }
     
     private func configureSearchBar() {
         
         searchBar
             .rx_text
-            .subscribeNext { [unowned self] in
-                let predicate: NSPredicate? = $0.isEmpty ? nil : NSPredicate(format: "name contains[cd] %@", $0)
-                self.dateSource.setup(predicate: predicate, sortOption: .By(key: "name", ascending: true))
-
-            }
-        .addDisposableTo(disposeBag)
+            .subscribeNext { [unowned self] _ in self.reloadTableView() }
+            .addDisposableTo(disposeBag)
         
         searchBar
             .rx_searchButtonClicked
@@ -103,21 +99,17 @@ class PlacemarksViewController: UIViewController {
     private func configureMapView() {
         observeForName(UIKeyboardWillShowNotification) { [unowned self] _ in
             self.showMapView = false
+            self.searchBar.setShowsCancelButton(true, animated: true)
         }
         
         observeForName(UIKeyboardWillHideNotification) { [unowned self] _ in
             self.showMapView = true
+            self.searchBar.setShowsCancelButton(false, animated: true)
         }
         
         observeForName(UIKeyboardDidHideNotification) { [unowned self] _ in
-            self.showMapView = true
-            let searchString = self.searchBar.text ?? ""
-            let predicate: NSPredicate? = searchString.isEmpty ? nil :
-                NSPredicate(format: "name contains[cd] %@", searchString)
-            self.mapDelegate.setup(predicate: predicate)
+            self.reloadMapView()
         }
-        
-        
     }
     
     private func detailCalloutAccessoryViewForPlacemarkplacemark(placemark: Placemark) -> DetailCalloutAccessoryView {
@@ -138,10 +130,10 @@ class PlacemarksViewController: UIViewController {
     }
     
     private func reloadTableView() {
-        dateSource.setup(sortOption: .By(key: "name", ascending: true))
+        dateSource.setup(predicate: predicate, sortOption: .By(key: "name", ascending: true))
     }
     
     private func reloadMapView() {
-        mapDelegate.setup()
+        mapDelegate.setup(predicate: predicate)
     }
 }

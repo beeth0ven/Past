@@ -22,7 +22,7 @@ class CoreDataMapDelegate<AV: MKAnnotationView ,MO: NSManagedObject>: NSObject, 
         sortOption: NSSortDescriptor.Option? = .By(key: "creationDate", ascending: false),
         context: NSManagedObject.Context = .Main
         ) {
-        
+                
         let request = NSFetchRequest(MO)
         request.predicate = predicate
         request.sortDescriptors = sortOption.flatMap { [$0.sortDescriptor] }
