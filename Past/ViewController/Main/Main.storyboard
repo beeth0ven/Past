@@ -139,13 +139,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X3T-cO-a4D">
-                                <rect key="frame" x="0.0" y="44" width="600" height="246"/>
+                                <rect key="frame" x="0.0" y="88" width="600" height="224"/>
                                 <connections>
                                     <outlet property="delegate" destination="6Vs-fv-U7s" id="fZG-xY-8gJ"/>
                                 </connections>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pR8-V7-mfo">
-                                <rect key="frame" x="0.0" y="290" width="600" height="246"/>
+                                <rect key="frame" x="0.0" y="312" width="600" height="224"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="otR-Rg-HEi">
                                     <rect key="frame" x="0.0" y="72" width="600" height="0.0"/>
@@ -185,9 +185,14 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="autoShrink" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </tableView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Please Enter Address" translatesAutoresizingMaskIntoConstraints="NO" id="Q0H-ge-Dlv">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <searchBar contentMode="redraw" misplaced="YES" searchBarStyle="minimal" text="" placeholder="Please Enter Address" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0H-ge-Dlv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="88"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Place</string>
+                                    <string>Region</string>
+                                </scopeButtonTitles>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -67,6 +67,10 @@ class PlacemarksViewController: UIViewController {
             cell.textLabel?.text = placemark.title
             cell.detailTextLabel?.text = placemark.subtitle
         }
+        dateSource.didSelectObject = { [unowned self] placemark in
+            let predicate = NSPredicate(format: "SELF in %@", [placemark])
+            self.mapDelegate.setup(predicate: predicate)
+        }
     }
     
     private func setupMapDelegate() {
